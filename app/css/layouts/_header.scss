@@ -1,0 +1,25 @@
+header {
+	&:hover{
+	}
+	@media screen and (max-width: 1000px) {
+	}
+	nav{
+		&:before{
+		}
+		a{
+			&:hover, &.active{
+				@media screen and (max-width: 1000px) {
+				}
+			}
+			@media screen and (max-width: 1000px) {
+			}
+		}
+		@media screen and (max-width: 1000px) {
+		}
+
+	}
+	&+[role=kv]{
+	}
+}
+&.fixed-menu{
+}

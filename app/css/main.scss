@@ -1,0 +1,17 @@
+$icon-font-path: '../fonts/';
+@import "common/webfonts";
+@import "common/override";
+// bower:scss
+@import "vendor/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+@import "common/vbox";
+@import "common/variables";
+@import "common/global";
+@import "layouts/anime";
+[role=content]{
+    @import "layouts/header";
+    @import "layouts/footer";
+    @import "layouts/main";
+}
+html.ie{
+}

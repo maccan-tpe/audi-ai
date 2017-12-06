@@ -1,0 +1,21 @@
+@media screen and (min-width: $screen-xs) {
+	// body{
+	// 	padding-top: 1px;
+	// 	margin-top: -1px;
+	// 	min-width: $screen-md;
+	// 	width: 100%;
+	// 	>.background, >header, >.content{
+	// 		min-width: $screen-md;
+	// 	}
+	// }
+}
+@media screen and (max-width: #{$screen-xs - 1}) {
+	// html, body, .background, header, header nav,.app.content{
+	// 	min-width: 320px;
+	// 	max-width: 100%;
+	// 	max-width: 100vw;
+	// }
+	// [role="main"]{
+	// 	margin-bottom: per(128, 640);
+	// }
+}

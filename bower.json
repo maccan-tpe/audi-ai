@@ -1,0 +1,38 @@
+{
+  "name": "frontend-template",
+  "private": true,
+  "dependencies": {
+    "modernizr": "~2.8.1",
+    "detectizr": "^2.2.0",
+    "bootstrap": "^3.3.7",
+    "bootstrap-sass": "^3.3.7",
+    "gsap": "^1.20.2",
+    "jquery": "1.12",
+    "venobox": "^1.8.2",
+    "animate.css": "^3.5.2"
+  },
+  "overrides": {
+    "slick-carousel": {
+      "main": [
+        "slick/fonts/*",
+        "slick/slick.js",
+        "slick/slick.scss",
+        "slick/slick-theme.scss"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "less/font-awesome.less",
+        "scss/font-awesome.scss",
+        "fonts/*"
+      ]
+    },
+    "gsap": {
+      "main": "./src/minified/TweenMax.min.js"
+    }
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2"
+  }
+}

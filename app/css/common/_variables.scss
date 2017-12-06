@@ -1,0 +1,226 @@
+@function vwsm($pixels, $context: $screen-sm-num) {
+  @return #{$pixels/$context*100}vw;
+}
+
+@function vwxs($pixels, $context: $screen-xs-num) {
+  @return #{$pixels/$context*100}vw;
+}
+
+@function vwlg($pixels, $context: $screen-lg-num) {
+  @return #{$pixels/$context*100}vw;
+}
+
+@mixin keyframes($animationName)
+{
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName}  {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+@mixin animation ($animation) {
+    -webkit-animation: $animation;
+
+    -moz-animation: $animation;
+
+    -o-animation: $animation;
+
+    animation: $animation;
+}
+
+
+@function per($pixels, $context: $browser-xs-viewport){
+  @return percentage($pixels/$context);
+}
+@function em($pixels, $context: $font-size-base-num){
+  @return #{$pixels/$context}em;
+}
+
+// @for $i from 6 to 150 {
+// 	.fontsize-#{$i} {
+// 		@media screen and (min-width: #{$screen-xs}) {
+// 			font-size: #{$i}px;
+// 			font-size: percentage($i/$font-size-base-num);
+// 		}
+// 	}
+// 	.fontsize-sm-#{$i} {
+// 		@media screen and (max-width: #{$screen-xs - 1}) {
+// 			font-size: #{$i}px;
+// 			font-size: percentage($i/$font-size-base-num);
+// 			font-size: vwsm($i);
+// 		}
+// 	}
+// }
+
+@mixin SubItem() {
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;	
+}
+
+@mixin SubImgW() {
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: auto;	
+}
+
+@mixin SubImgH() {
+	position: absolute;
+	top:0;
+	left:0;
+	width: auto;
+	height: 100%;	
+}
+
+@mixin Item($width, $height, $top: 'auto', $right: 'auto', $bottom: 'auto', $left: 'auto', $viewport: $browser-xs-viewport, $fit: 'none', $pos: 'absolute') {
+
+	@if($fit == 'fit'){
+		$width: per($width, $viewport);
+		$height: per($height, $viewport);
+		@if($top != 'auto') {
+			$top: per($top, $viewport);
+		}
+		@if($left != 'auto') {
+			$left: per($left, $viewport);
+		}
+		@if($right != 'auto') {
+			$right: per($right, $viewport);
+		}
+		@if($bottom != 'auto') {
+			$bottom: per($bottom, $viewport);
+		}
+	}@else{
+		$width: #{$width}px;
+		$height: #{$height}px;
+		@if($top != 'auto') {
+			$top: #{$top}px;
+		}
+		@if($left != 'auto') {
+			$left: #{$left}px;
+		}
+		@if($right != 'auto') {
+			$right: #{$right}px;
+		}
+		@if($bottom != 'auto') {
+			$bottom: #{$bottom}px;
+		}
+	}
+
+	margin: 0;
+	width: $width;
+	height: 0;
+	position: #{$pos};
+	padding-top: $height;
+
+	@if($left == 'auto') {
+		right: 0;
+		left: auto;
+		margin-right: $right;
+		z-index: 1;
+	}@else{
+		margin-left: $left;
+		left: 0;
+		right: auto;
+		margin-right: $right;
+		z-index: 2;
+	}
+	@if($top == 'auto') {
+		bottom: 0;
+		top: auto;
+		margin-bottom: $bottom;
+	}@else{
+		top: 0;
+		bottom: 0;
+		margin-top: $top;
+		margin-bottom: $bottom;
+	}
+}
+.vertical-top{
+	letter-spacing: -1px;
+	&:before{
+		height: 100%;
+		content:'';
+		display: inline-block;
+		vertical-align: top;
+		letter-spacing: -1px;
+	}
+	>*{
+		display: inline-block;
+		vertical-align: top;
+		letter-spacing: 1px;
+	}
+}
+
+.vertical-middle{
+	// letter-spacing: -1em;
+	@media screen and (max-width: #{$screen-xs - 1}) {
+		white-space: nowrap;
+	}
+	&:before{
+		height: 100%;
+		content:'';
+		display: inline-block;
+		vertical-align: middle;
+		// letter-spacing: -1em;
+	}
+	>*{
+		display: inline-block;
+		vertical-align: middle;
+		letter-spacing: 1px;
+		white-space: normal;
+	}
+}
+.vertical-bottom{
+	&:before{
+		height: 100%;
+		content:'';
+		display: inline-block;
+		vertical-align: bottom;
+	}
+	>*{
+		display: inline-block;
+		vertical-align: bottom;
+	}
+}
+
+$font-default-color: #000;
+$font-default-hover-color: #333;
+$font-white-color: #fff;
+
+.subitem{
+	@include SubItem();
+}
+.subimg-w{
+	@include SubImgW();
+}
+.subimg-h{
+	@include SubImgH();
+}
+.visible-en, .visible-zh, .visible-tai{
+	display: none;
+}
+// html[lang="en"] .visible-en, html[lang="zh"] .visible-zh, html[lang="tai"].visible-tai{
+// 	display: block;
+// }
+html[lang="en"] .visible-en, html[lang="zh"] .visible-zh, html[lang="tai"] .visible-tai{
+	display: block;
+}
+
+// html[lang="en"] .visible-en-inline, html[lang="zh"] .visible-zh-inline, html[lang="tai"] .visible-tai-inline{
+// 	display: inline;
+// }
+
+// html[lang="en"] .visible-en-inline-block, html[lang="zh"] .visible-zh-inline-block, html[lang="tai"] .visible-tai-inline-block{
+// 	display: inline-block;
+// }
