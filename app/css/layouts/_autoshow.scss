@@ -97,8 +97,15 @@
         }
     }
 
-
-
+    .sumary{
+        @include Item(400, 500, 'auto', 90, 90, 'auto', 1920, 'fit','absolute');
+        svg,img{
+            height: 1em;
+            path {
+                fill: #fff;
+            }
+        }
+    }
     #autoshow01:checked ~ .viewport label[for=autoshow01] span,
     #autoshow02:checked ~ .viewport label[for=autoshow02] span,
     #autoshow03:checked ~ .viewport label[for=autoshow03] span,
