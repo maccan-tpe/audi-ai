@@ -1,8 +1,16 @@
 [role=autoshow]{
     .background{
-        figure.loaded{
+        overflow: hidden;
+        backface-visibility: hidden;
+        figure.loaded{            
             opacity: 0;
-            filter: blur(10px);
+            filter: blur(5px) grayscale(100%);
+            transition: 0.5s opacity 0.4s, 0.3s filter 0s ;
+            backface-visibility: hidden;
+            &:after{
+                @include SubItem();
+                content: '';
+            }
         }
     }
     .title{
@@ -66,6 +74,7 @@
             }
         }
     }
+
     .submenu{
         height: 0;
         filter: blur(10px);
@@ -87,6 +96,9 @@
             margin-left: 75%;
         }
     }
+
+
+
     #autoshow01:checked ~ .viewport label[for=autoshow01] span,
     #autoshow02:checked ~ .viewport label[for=autoshow02] span,
     #autoshow03:checked ~ .viewport label[for=autoshow03] span,
@@ -130,5 +142,7 @@
     #autoshow0401:checked ~ .background [data-id=autoshow0401]{
         filter: none;
         opacity: inherit;
+        transition: 0.4s opacity 0.4s, 0s filter 0s ;
+        z-index: 1;
     }
 }
