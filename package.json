@@ -5,8 +5,7 @@
   },
   "scripts": {
     "postinstall": "bower i --config.interactive=false",
-    "postupdate": "bower update --config.interactive=false",
-    "test": "gulp test"
+    "postupdate": "bower update --config.interactive=false"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",
