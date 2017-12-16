@@ -1,9 +1,14 @@
 header {
+	z-index: 10;
+	position: fixed;
 	&:hover{
 	}
 	@media screen and (max-width: 1000px) {
 	}
 	nav{
+		float: right;
+		margin-top: em(40, 18);
+		margin-right: em(40, 18);
 		&:before{
 		}
 		a{
@@ -13,10 +18,25 @@ header {
 			}
 			@media screen and (max-width: 1000px) {
 			}
+			&+a{
+				margin-left: 1em;
+			}
 		}
 		@media screen and (max-width: 1000px) {
 		}
 
+	}
+	.logo{
+		font-size: 1em;
+		width: em(72, 18);
+		height: em(24, 18);
+		margin-top: em(40, 18);
+		margin-left: em(40, 18);
+		position: absolute;
+		filter: drop-shadow(0 0 1px rgba(255,255,255,0.8));
+		img, svg{
+			@include SubImgW();
+		}
 	}
 	&+[role=kv]{
 	}

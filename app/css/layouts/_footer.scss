@@ -1,3 +1,11 @@
 footer {
-    position: relative;
+    position: fixed!important;
+    left: em(40,12);
+    bottom: em(40,12);
+    color: #fff;
+    font-size: em(12,18);
+    line-height: 1;
+    p{
+        margin: 0;
+    }
 }

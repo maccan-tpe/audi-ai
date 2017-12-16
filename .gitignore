@@ -7,3 +7,5 @@ test/vendor
 yarn.lock
 .gulp
 build
+*.zip
+psd

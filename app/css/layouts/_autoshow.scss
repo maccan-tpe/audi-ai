@@ -1,0 +1,134 @@
+[role=autoshow]{
+    .background{
+        figure.loaded{
+            opacity: 0;
+            filter: blur(10px);
+        }
+    }
+    .title{
+        @include Item(777, 0, 276, 0, 0, 227, 1920, 'fit','absolute');
+        height: auto;
+        position: relative;
+        h2{
+            margin: 0 0 1em;
+            white-space: nowrap;
+        }
+        .background{
+            top:-10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;            
+            background: no-repeat left/ 100%;
+        }
+    }
+
+    .menu{
+        @include Item(777, 0, 456, 0, 0, 227, 1920, 'fit','absolute');
+        font-size: em(16,18);
+        width: em(400,16);
+        white-space: nowrap;
+        letter-spacing: 0;
+        word-spacing: 0;
+        &:before{
+            content:'';
+            width: 100%;
+            display: block;
+            border-bottom: 2px solid currentColor;
+            margin-top: 2.75em;
+            opacity: 0.3;
+            position: absolute;
+        }
+        label{
+            // margin: 0;
+            width: 25%;
+            display: inline-block;
+            vertical-align: top;
+            cursor: pointer;
+            span{
+                display: inline-block;
+                filter: blur(10px);
+                backface-visibility: hidden;
+                opacity: 0;
+                transition-duration: 0.2s;
+                overflow: hidden;
+                &:after{
+                    content:'';
+                    width: 100%;
+                    display: block;
+                    border-bottom: 2px solid currentColor;
+                }
+            }
+            &:hover{
+                span{
+                    filter: none;
+                    opacity: inherit;
+                }
+            }
+        }
+    }
+    .submenu{
+        height: 0;
+        filter: blur(10px);
+        backface-visibility: hidden;
+        opacity: 0;
+        label{
+            display: block;
+            &:hover{
+                color: #b40404;
+            }
+        }
+        &.submenu02{
+            margin-left: 25%;
+        }
+        &.submenu03{
+            margin-left: 50%;
+        }
+        &.submenu04{
+            margin-left: 75%;
+        }
+    }
+    #autoshow01:checked ~ .viewport label[for=autoshow01] span,
+    #autoshow02:checked ~ .viewport label[for=autoshow02] span,
+    #autoshow03:checked ~ .viewport label[for=autoshow03] span,
+    #autoshow04:checked ~ .viewport label[for=autoshow04] span,
+    #autoshow01:checked ~ .viewport .submenu01,
+    #autoshow02:checked ~ .viewport .submenu02,
+    #autoshow03:checked ~ .viewport .submenu03,
+    #autoshow04:checked ~ .viewport .submenu04{
+        filter: none;
+        opacity: inherit;
+        height: auto;
+    }
+    #autoshow0101:checked ~ .viewport [for=autoshow0101],
+    #autoshow0201:checked ~ .viewport [for=autoshow0201],
+    #autoshow0202:checked ~ .viewport [for=autoshow0202],
+    #autoshow0203:checked ~ .viewport [for=autoshow0203],
+    #autoshow0204:checked ~ .viewport [for=autoshow0204],
+    #autoshow0205:checked ~ .viewport [for=autoshow0205],
+    #autoshow0206:checked ~ .viewport [for=autoshow0206],
+    #autoshow0207:checked ~ .viewport [for=autoshow0207],
+    #autoshow0208:checked ~ .viewport [for=autoshow0208],
+    #autoshow0209:checked ~ .viewport [for=autoshow0209],
+    #autoshow0301:checked ~ .viewport [for=autoshow0301],
+    #autoshow0302:checked ~ .viewport [for=autoshow0302],
+    #autoshow0401:checked ~ .viewport [for=autoshow0401]{
+        color: #bb0a30;
+    }
+    
+    #autoshow0101:checked ~ .background [data-id=autoshow0101],
+    #autoshow0201:checked ~ .background [data-id=autoshow0201],
+    #autoshow0202:checked ~ .background [data-id=autoshow0202],
+    #autoshow0203:checked ~ .background [data-id=autoshow0203],
+    #autoshow0204:checked ~ .background [data-id=autoshow0204],
+    #autoshow0205:checked ~ .background [data-id=autoshow0205],
+    #autoshow0206:checked ~ .background [data-id=autoshow0206],
+    #autoshow0207:checked ~ .background [data-id=autoshow0207],
+    #autoshow0208:checked ~ .background [data-id=autoshow0208],
+    #autoshow0209:checked ~ .background [data-id=autoshow0209],
+    #autoshow0301:checked ~ .background [data-id=autoshow0301],
+    #autoshow0302:checked ~ .background [data-id=autoshow0302],
+    #autoshow0401:checked ~ .background [data-id=autoshow0401]{
+        filter: none;
+        opacity: inherit;
+    }
+}
