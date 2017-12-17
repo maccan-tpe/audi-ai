@@ -269,5 +269,7 @@ app.partial.kv = function($, container){
 	  }, 100);
 	}
 	window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-	onYouTubeIframeAPIReady();
+	try{
+		onYouTubeIframeAPIReady();
+	}catch{}
 };

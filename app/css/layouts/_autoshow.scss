@@ -11,6 +11,26 @@
                 @include SubItem();
                 content: '';
             }
+            .yt{
+                width: 100%;
+                padding-top: per(1080, 1920);
+                position: relative;
+                &:after{
+                    background: url(../img/grid.svg) 0/4px auto rgba(0,0,0,0.3);
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                    opacity: 0.3;
+                    filter: drop-shadow(0 0 4px #000);
+                }
+            }
+            iframe{
+                @include SubItem();
+            }
         }
     }
     .title{
