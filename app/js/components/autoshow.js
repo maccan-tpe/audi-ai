@@ -36,6 +36,7 @@ app.partial.autoshow = function($, container){
 		var player;
 		
 		function onYouTubeIframeAPIReady() {
+			$('#player', container).addClass('hide');
 			player = new YT.Player('player', {
 				videoId: 'fJGo8XNahLY',
 				playerVars: {
@@ -74,7 +75,10 @@ app.partial.autoshow = function($, container){
 					player.seekTo(0);
 					clearInterval(wait4loop);
 					player.playVideo();
-					$('html').removeClass('loading');
+					setTimeout(function(){
+						$('html').removeClass('loading');
+						$('#player', container).removeClass('hide');
+					}, 200)
 				}
 			}, 100);
 		}

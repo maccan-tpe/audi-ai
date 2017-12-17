@@ -66,6 +66,7 @@ app.partial.kv = function($, container){
 						player.seekTo(0);
 						clearInterval(wait4loop);
 						player.playVideo();
+						setTimeout(function(){},10)
 						$('html').removeClass('loading');
 					}
 				}, 100);
