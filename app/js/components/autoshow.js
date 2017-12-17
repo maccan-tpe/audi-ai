@@ -173,6 +173,9 @@ app.partial.autoshow = function($, container){
 					setTimeout(function(){
 						$('html').removeClass('loading');
 						$('#player', container).addClass('in');
+						if(location.hash == '#A8L'){
+							$('#autoshow01011').trigger('click');
+						}
 					}, 200)
 				}
 			}, 100);

@@ -1,23 +1,21 @@
 [role=a8l]{
-    width: per(1180, 1920);
+    width: per(1260, 1920);
     right: 0;
     top: 0;
     position: fixed;
-    height: 100%;
-    overflow: auto;
+    height: 0;
     z-index: -1;
     opacity: 0;
     filter: blur(10px) grayscale(100%);
     height: 0;
-    overflow: hidden;
     transition: 0.5s opacity 0.4s, 0.3s filter 0s;
 
     .wrap{
-        position: relative;
+        position: absolute;
         right: 0;
         margin-top: 5em;
-        width: per(940, 1180);
-        margin-right: per(240, 1180);
+        width: per(940, 1260);
+        margin-right: per(240, 1260);
         padding-bottom: 5em;
     }
     .youtube{
@@ -178,9 +176,11 @@
     .back{
         width: em(41, 18);
         height: em(30, 18);
-        position: absolute;
-        top: em(-2, 18);
-        left: em(-60, 18);
+        position: fixed;
+        top: 5em;
+        right: per(1230, 1920);
+        cursor: pointer;
+        filter: drop-shadow(0 0 1px #000);
         img,svg{
             @include SubItem();
         }
