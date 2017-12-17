@@ -1,9 +1,11 @@
 [role=whatsnew]{
     .title{
-        @include Item(777, 0, 0, 0, 0, 227, 1920, 'fit','absolute');
         top: 50%;
         margin-top: -10em;
         height: em(300,60);
+        z-index: 2;
+        position: absolute;
+        width: per(777,1920);
         h2{
             margin: 0 0 1em;
             white-space: nowrap;
@@ -39,7 +41,9 @@
         }
     }
     .show-detail{
-        @include Item(1100, 0, 0, 0, 0, 0, 1920, 'fit','absolute');
+        z-index: 2;
+        position: absolute;
+        width: per(1100,1920);
         top: 50%;
         margin-top: 0;
         left: 50%;
