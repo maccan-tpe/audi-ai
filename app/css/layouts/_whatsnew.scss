@@ -52,11 +52,15 @@
         font-size: em(16,18);
         h3{
             margin: 0;
-            font-size: em(26,16);
-            line-height: em(30,26);
+            font-size: em(22,16);
+            line-height: em(30,22);
             white-space: nowrap;
             font-weight: 600;
             width: 5em;
+            .l{
+                font-size: em(26,22);
+                line-height: em(30,26);
+            }
             b{
                 // text-shadow: 2px 2px 4px #bb0a30;
                 position: relative;
@@ -72,7 +76,7 @@
         }
         ul{
             li{
-                line-height: em(32,16);
+                line-height: em(31,16);
             }
         }
         .row{

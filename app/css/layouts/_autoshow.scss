@@ -14,10 +14,13 @@
         }
     }
     .title{
-        @include Item(777, 0, 0, 0, 0, 227, 1920, 'fit','absolute');
         top: 50%;
         margin-top: -10em;
+        margin-left: per(227,1920);
         height: em(300,60);
+        z-index: 2;
+        position: absolute;
+        width: per(777,1920);
         h2{
             margin: 0 0 1em;
             white-space: nowrap;
@@ -84,7 +87,10 @@
         filter: blur(10px);
         backface-visibility: hidden;
         opacity: 0;
-        overflow: visible;
+        overflow-y: hidden;
+        overflow-x: visible;
+        z-index: -1;
+        width: 100%;
         label{
             display: block;
             &:hover{
@@ -118,6 +124,7 @@
             h4{
                 font-size: em(48,24);
                 white-space: nowrap;
+                text-shadow: 0 0 1px currentColor;
             }
         }
         svg,img{
@@ -153,6 +160,9 @@
             }
         }
     }
+
+
+
     #autoshow01:checked ~ .viewport label[for=autoshow01] span,
     #autoshow02:checked ~ .viewport label[for=autoshow02] span,
     #autoshow03:checked ~ .viewport label[for=autoshow03] span,
@@ -164,6 +174,7 @@
         filter: none;
         opacity: inherit;
         height: auto;
+        z-index: 1;
     }
     #autoshow0101:checked ~ .viewport [for=autoshow0101],
     #autoshow0201:checked ~ .viewport [for=autoshow0201],
