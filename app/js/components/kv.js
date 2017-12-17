@@ -271,5 +271,5 @@ app.partial.kv = function($, container){
 	window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 	try{
 		onYouTubeIframeAPIReady();
-	}catch{}
+	}catch(e){}
 };
