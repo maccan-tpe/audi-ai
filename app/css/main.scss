@@ -4,9 +4,9 @@ $icon-font-path: '../fonts/';
 // bower:scss
 @import "vendor/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
-@import "common/vbox";
 @import "common/variables";
 @import "common/global";
+@import "common/vbox";
 @import "layouts/anime";
 @import "layouts/header";
 @import "layouts/footer";

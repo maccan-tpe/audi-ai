@@ -197,6 +197,7 @@
         z-index: 1;
     }
     #autoshow0101:checked ~ .viewport [for=autoshow0101],
+    #autoshow01011:checked ~ .viewport [for=autoshow01011],
     #autoshow0201:checked ~ .viewport [for=autoshow0201],
     #autoshow0202:checked ~ .viewport [for=autoshow0202],
     #autoshow0203:checked ~ .viewport [for=autoshow0203],
@@ -228,6 +229,12 @@
         filter: none;
         opacity: inherit;
         transition: 0.4s opacity 0.4s, 0s filter 0s ;
+        z-index: 1;
+    }
+    #autoshow01011:checked ~ .background [data-id=autoshow0101]{
+        filter: grayscale(100%) blur(5px);
+        opacity: inherit;
+        transition: 0.4s opacity 0s, 0.3s filter 0s ;
         z-index: 1;
     }
     #autoshow0101:checked ~ .viewport [data-id=autoshow0101],

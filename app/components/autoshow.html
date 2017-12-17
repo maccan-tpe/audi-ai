@@ -1,10 +1,11 @@
 
-            <section role="autoshow" class="section" data-nav="活動辦法">
+            <section role="autoshow" class="section" data-nav="AUTOSHOW">
                 <input class="hide" type="radio" id="autoshow01" name="autoshow" checked>
                 <input class="hide" type="radio" id="autoshow02" name="autoshow">
                 <input class="hide" type="radio" id="autoshow03" name="autoshow">
                 <input class="hide" type="radio" id="autoshow04" name="autoshow">
-                <input class="hide" type="radio" id="autoshow0101" name="autoshowDetail" checked>
+                <input class="hide" type="radio" id="autoshow0101" name="autoshowDetail">
+                <input class="hide" type="radio" id="autoshow01011" name="autoshowDetail" checked>
                 <input class="hide" type="radio" id="autoshow0201" name="autoshowDetail">
                 <input class="hide" type="radio" id="autoshow0202" name="autoshowDetail">
                 <input class="hide" type="radio" id="autoshow0203" name="autoshowDetail">
@@ -20,7 +21,7 @@
                 <figure class="background">
                     <figure data-car-name="A8 L" data-id="autoshow0101" id="a8" data-src="https://img.youtube.com/vi/fJGo8XNahLY/hqdefault.jpg">
                         <aside class="yt">
-                            <div id="player"></div>
+                            <div id="player" data-vid="fJGo8XNahLY"></div>
                             <!-- <iframe id="player" src="https://www.youtube.com/embed/fJGo8XNahLY?autoplay=1&amp;playlist=fJGo8XNahLY&amp;rel=0&amp;controls=0&amp;showinfo=0&amp;modestbranding=1&amp;iv_load_policy=3&amp;enablejsapi=1&amp;version=3&amp;loop=1&amp;vq=hd720" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe> -->
                         </aside>
                     </figure>
@@ -51,7 +52,7 @@
                         </label><label for="autoshow04">04.<br><span>性能車款</span></label>
                         <div class="clearfix"></div>
                         <aside class="submenu01 submenu"> 
-                            <label for="autoshow0101">A8 L</label>
+                            <a class="vbox" data-gall="gall-frame" data-vbtype="inline" href="#a8l"></a><label for="autoshow01011">A8 L</label>
                         </aside>
                         <aside class="submenu02 submenu"> 
                             <label for="autoshow0201">SQ5</label>
@@ -194,3 +195,4 @@
                     </aside>
                 </aside>
             </section>
+			@@include('a8l.html')
