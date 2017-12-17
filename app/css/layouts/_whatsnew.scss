@@ -93,6 +93,9 @@
             left: 0;
             img, svg{
                 @include SubItem();
+                .arrow-line{fill:#BB0A30;}
+                .arrow-tri{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#BB0A30;stroke-miterlimit:10;}
+                .arrow-tri2{fill-rule:evenodd;clip-rule:evenodd;fill:#BB0A30;}
             }
         }
         .eclipse{
@@ -104,6 +107,7 @@
             left: em(665, 16);
             img, svg{
                 @include SubItem();
+                .eclise,.eclise20{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#BB0A30;stroke-miterlimit:10;}
                 .eclise20{
                     opacity: 0.2;
                 }
@@ -116,16 +120,16 @@
             position: absolute;
             color: #bb0a30;
             font-size: em(16,18);
+            white-space: nowrap;
         }
         a.btn-autoshow{
-            width: 822px;
-            height: 49px;
             top: 50%;
             left: 0;
             color: #bb0a30;
             margin: 8.5em 0 0 em(815, 16);
             position: absolute;
             font-size: em(16,18);
+            white-space: nowrap;
         }
     }
 }
