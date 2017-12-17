@@ -12,6 +12,7 @@ header {
 		&:before{
 		}
 		a{
+			text-shadow: 0 0 3px #000;
 			&:hover, &.active{
 				@media screen and (max-width: 1000px) {
 				}

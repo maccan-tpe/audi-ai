@@ -1,2 +1,101 @@
 [role=whatsnew]{
+    .title{
+        @include Item(777, 0, 0, 0, 0, 227, 1920, 'fit','absolute');
+        top: 50%;
+        margin-top: -10em;
+        height: em(300,60);
+        h2{
+            margin: 0 0 1em;
+            white-space: nowrap;
+        }
+        .background{
+            top:-10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;            
+            background: no-repeat left/ 100%;
+        }
+    }
+    .background{
+        #tp{
+            width: 234px;
+            height: 57px;
+            top: 50%;
+            left: 50%;
+            margin: -1.5em 0 0 -22.5em;
+        }
+        #kh{
+            width: 424px;
+            height: 58px;
+            top: 50%;
+            left: 50%;
+            margin: 8.5em 0 0 -22.5em;
+        }
+        i{
+            color: transparent;
+            font-size: em(60,18);
+            font-weight: 500;
+            line-height: 1;
+        }
+    }
+    .show-detail{
+        @include Item(1100, 0, 0, 0, 0, 0, 1920, 'fit','absolute');
+        top: 50%;
+        margin-top: 0;
+        left: 50%;
+        margin-left: em(-350, 16);
+        font-size: em(16,18);
+        h3{
+            margin: 0;
+            font-size: em(26,16);
+            line-height: em(30,26);
+            white-space: nowrap;
+            font-weight: 600;
+            b{
+                // text-shadow: 2px 2px 4px #bb0a30;
+                position: relative;
+                &:after{
+                    content: attr(title);
+                    position: absolute;
+                    right: -2px;
+                    bottom: -2px;
+                    color: #bb0a30;
+                    z-index: -1;
+                }
+            }
+        }
+        ul{
+            li{
+                line-height: em(32,16);
+            }
+        }
+        .row{
+            +.row{
+                padding-top: 5em;
+            }
+        }
+
+        a.btn-survey{
+            width: 177px;
+            height: 86px;
+            top: 50%;
+            left: 50%;
+            margin: 8em 0 0 18.5em;
+            position: absolute;
+            img{
+                @include SubImgW();
+            }
+        }
+        a.btn-autoshow{
+            width: 822px;
+            height: 49px;
+            top: 50%;
+            left: 50%;
+            margin: 6.5em 0 0 -20em;
+            position: absolute;
+            img{
+                @include SubImgW();
+            }
+        }
+    }
 }
