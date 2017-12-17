@@ -231,6 +231,13 @@
         transition: 0.4s opacity 0.4s, 0s filter 0s ;
         z-index: 1;
     }
+    #autoshow01011:checked ~ [role=a8l]{
+        filter: none;
+        opacity: inherit;
+        height: auto;
+        transition: 0.4s opacity 0.4s, 0s filter 0s ;
+        z-index: 1;
+    }
     #autoshow01011:checked ~ .background [data-id=autoshow0101]{
         filter: grayscale(100%) blur(5px);
         opacity: inherit;

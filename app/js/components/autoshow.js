@@ -106,12 +106,12 @@ app.partial.autoshow = function($, container){
 			$('#' + v.elementId).parent().unbind('click').on('click', function(){
 				var playing = $('#' + v.elementId).parent().attr('data-playing');
 				console.log(playing);
-				if(!playing){
-					v.player.playVideo();
+				if(playing != 1){
 					$('#' + v.elementId).parent().attr('data-playing', 1);
+					v.player.playVideo();
 				}else{
-					v.player.pauseVideo();
 					$('#' + v.elementId).parent().attr('data-playing', 0);
+					v.player.pauseVideo();
 				}
 			});
 		}

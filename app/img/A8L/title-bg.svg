@@ -3,10 +3,10 @@
 <svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 101 60" style="enable-background:new 0 0 101 60;" xml:space="preserve">
 <style type="text/css">
-	.a8ltitle{fill:none;}
+	.st0{fill:#FFFFFF;}
 </style>
-<path class="a8ltitle" d="M96,60h5l-2.5-4L96,60z"/>
-<path class="a8ltitle" d="M0,60h5l-2.5-4L0,60z"/>
-<path class="a8ltitle" d="M96,0h5l-2.5,4L96,0z"/>
-<path class="a8ltitle" d="M0,0h5L2.5,4L0,0z"/>
+<path class="st0" d="M96,60h5l-2.5-4L96,60z"/>
+<path class="st0" d="M0,60h5l-2.5-4L0,60z"/>
+<path class="st0" d="M96,0h5l-2.5,4L96,0z"/>
+<path class="st0" d="M0,0h5L2.5,4L0,0z"/>
 </svg>

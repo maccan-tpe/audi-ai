@@ -1,11 +1,25 @@
 [role=a8l]{
-    width: per(940, 1920);
+    width: per(1180, 1920);
     right: 0;
     top: 0;
-    margin-top: 5em;
     position: fixed;
-    z-index: 2;
-    margin-right: per(240, 1920);
+    height: 100%;
+    overflow: auto;
+    z-index: -1;
+    opacity: 0;
+    filter: blur(10px) grayscale(100%);
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s opacity 0.4s, 0.3s filter 0s;
+
+    .wrap{
+        position: relative;
+        right: 0;
+        margin-top: 5em;
+        width: per(940, 1180);
+        margin-right: per(240, 1180);
+        padding-bottom: 5em;
+    }
     .youtube{
         width: 100%;
         padding-top: per(398, 940);
@@ -14,6 +28,7 @@
         background: center/ cover;
         cursor: pointer;
         &:after{
+            transition-duration: 0s;
             content: '';
             top: 50%;
             left: 50%;
@@ -46,14 +61,128 @@
         &[data-playing="1"]{
             iframe{
                 opacity: 1;
+                filter: none;
+                transition-duration: 0s;
             }
             &:after{
                 opacity: 0;
+                filter: blur(10px);
+                transition-duration: 0.3s;
             }
+            figcaption{
+                opacity: 0;
+                filter: blur(10px);
+                transition-duration: 0.3s;
+            }
+        }
+    }
+    .km{
+        width: 100%;
+        padding-top: per(340, 940);
+        position: relative;
+        overflow: hidden;
+        background: center/ cover;
+    }
+    .look{
+        margin-top: 1em;
+        width: 100%;
+        padding-top: per(682, 940);
+        position: relative;
+        overflow: hidden;
+        background: center/ cover;
+        .youtube{
+            position: absolute;
+            top: 0;
+            margin-top: per(340, 940);
+            width: per(605, 940);
+            padding-top: per(343, 940);
+        }
+        figcaption{
+            height: per(343, 682);
+            margin-left: per(340, 940);
+            width: per(600, 940);
+            &:before, aside{
+                vertical-align: middle;
+            }
+        }
+    }
+    .inside{
+        margin-top: 1em;
+        width: 100%;
+        padding-top: per(682, 940);
+        position: relative;
+        overflow: hidden;
+        background: center/ cover;
+        .youtube{
+            position: absolute;
+            top: 0;
+            margin-top: per(340, 940);
+            width: per(600, 940);
+            padding-top: per(340, 940);
+        }
+        figcaption{
+            height: per(343, 682);
+            margin-left: per(340, 940);
+            width: per(600, 940);
+            &:before, aside{
+                vertical-align: middle;
+            }
+        }
+    }
+    figcaption{
+        @include SubItem();
+        white-space: nowrap;
+        transition-duration: 0s;
+        &:before{
+            content:'';
+            display: inline-block;
+            vertical-align: bottom;
+            width: 0;
+            overflow: hidden;
+            height: 100%;
+        }
+        aside{
+            vertical-align: bottom;
+            display: inline-block;
+            white-space: normal;
+            padding: em(40,18) em(50, 18);
+        }
+        h4{
+            font-size: em(36,18);
+            padding: 0.4em;
+            background: url(../img/a8l/title-bg.svg) no-repeat center/100%;
+            
+            display: inline-block;
+            width: auto;
+        }
+        h5{
+            font-size: em(24,18);
+        }
+        P{
+            font-size: em(16,18);
+        }
+        ol{
+            font-size: em(16,18);
+            line-height: em(30,16);
+            margin-top: 1em;
+            padding: 0 0 0 1.5em;
         }
     }
     iframe{
         @include SubItem();
         opacity: 0;
+        filter: blur(10px);
+        transition-duration: 0.3s;
+    }
+
+    .back{
+        width: em(41, 18);
+        height: em(30, 18);
+        position: absolute;
+        top: em(-2, 18);
+        left: em(-60, 18);
+        img,svg{
+            @include SubItem();
+        }
     }
 }
