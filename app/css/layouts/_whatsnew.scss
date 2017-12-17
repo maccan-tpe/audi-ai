@@ -56,6 +56,7 @@
             line-height: em(30,26);
             white-space: nowrap;
             font-weight: 600;
+            width: 5em;
             b{
                 // text-shadow: 2px 2px 4px #bb0a30;
                 position: relative;
@@ -79,28 +80,48 @@
                 padding-top: 5em;
             }
         }
-
-        a.btn-survey{
-            width: 177px;
-            height: 86px;
-            top: 50%;
-            left: 50%;
-            margin: 8em 0 0 18.5em;
+        .arrow{
+            width:em(710, 16);
+            padding-top: em(88, 16);
+            margin-top: 8em;
             position: absolute;
-            img{
-                @include SubImgW();
+            top: 0;
+            left: 0;
+            img, svg{
+                @include SubItem();
             }
+        }
+        .eclipse{
+            width: em(57,16);
+            padding-top: em(49, 16);
+            margin-top: 6.8em;
+            position: absolute;
+            top: 0;
+            left: em(665, 16);
+            img, svg{
+                @include SubItem();
+                .eclise20{
+                    opacity: 0.2;
+                }
+            }
+        }
+        a.btn-survey{
+            top: 50%;
+            left: 0;
+            margin: 14em 0 0 em(815, 16);
+            position: absolute;
+            color: #bb0a30;
+            font-size: em(16,18);
         }
         a.btn-autoshow{
             width: 822px;
             height: 49px;
             top: 50%;
-            left: 50%;
-            margin: 6.5em 0 0 -20em;
+            left: 0;
+            color: #bb0a30;
+            margin: 8.5em 0 0 em(815, 16);
             position: absolute;
-            img{
-                @include SubImgW();
-            }
+            font-size: em(16,18);
         }
     }
 }
