@@ -26,6 +26,54 @@ app.partial.kv = function($, container){
 					.css('top', top).height(wh)					
 					.css('left', left +'px').width(w);
 			}
+			var player;
+			function onYouTubeIframeAPIReady() {
+				player = new YT.Player('player', {
+				videoId: 'fJGo8XNahLY',
+				playerVars: {
+					autoplay: 1,
+					playlist: 'fJGo8XNahLY',
+					rel: 0,
+					controls: 0,
+					showinfo: 0,
+					modestbranding: 1,
+					iv_load_policy: 3,
+					enablejsapi: 1,
+					version: 3,
+					loop: 1,
+					vq: 'hd720'
+				},
+				events: {
+					onReady: function(){
+						player.playVideo();
+					},
+					onStateChange: function(){}
+				}
+				});
+				var wait4loop = setInterval(function(){
+					if(!player || !player.getVideoLoadedFraction){
+						return;
+					}
+					if($(window).width() <= 768 || $('html.mobile').length){
+						clearInterval(wait4loop);
+					}
+					var frac = player.getVideoLoadedFraction();
+					player.mute();
+				//   console.log(frac);
+					if(frac >= 0.2){
+					//   console.log('pauseVideo');
+						player.pauseVideo();	
+						player.seekTo(0);
+						clearInterval(wait4loop);
+						player.playVideo();
+						$('html').removeClass('loading');
+					}
+				}, 100);
+			}
+			window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+			try{
+				onYouTubeIframeAPIReady();
+			}catch(e){}
 		});
 	});
 	
@@ -224,52 +272,4 @@ app.partial.kv = function($, container){
 	  requestAnimationFrame(draw);
 	}
 	
-	var player;
-	function onYouTubeIframeAPIReady() {
-	  player = new YT.Player('player', {
-		videoId: 'enrTCrFJ71I',
-		playerVars: {
-			autoplay: 1,
-			playlist: 'enrTCrFJ71I',
-			rel: 0,
-			controls: 0,
-			showinfo: 0,
-			modestbranding: 1,
-			iv_load_policy: 3,
-			enablejsapi: 1,
-			version: 3,
-			loop: 1,
-			vq: 'hd720'
-		},
-		events: {
-			onReady: function(){
-				player.playVideo();
-			},
-			onStateChange: function(){}
-		}
-	  });
-	  var wait4loop = setInterval(function(){
-		  if(!player || !player.getVideoLoadedFraction){
-			  return;
-		  }
-		  if($(window).width() <= 768 || $('html.mobile').length){
-			  clearInterval(wait4loop);
-		  }
-		  var frac = player.getVideoLoadedFraction();
-		  player.mute();
-		//   console.log(frac);
-		  if(frac >= 0.2){
-			//   console.log('pauseVideo');
-			  player.pauseVideo();	
-			  player.seekTo(0);
-			  clearInterval(wait4loop);
-			  player.playVideo();
-			  $('html').removeClass('loading');
-		  }
-	  }, 100);
-	}
-	window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-	try{
-		onYouTubeIframeAPIReady();
-	}catch(e){}
 };
