@@ -154,6 +154,10 @@ app.partial.autoshow = function($, container){
 		var loop;
 		// $('.vbox').venobox({overlayClose: false});
 		function onYouTubeIframeAPIReady() {
+			if($(window).width() <= 768 || $('html.mobile').length){
+				$('html').removeClass('loading');
+				return;
+			}
 			$('#player', container).addClass('fade');
 
 			$.each(players, function(index, video){

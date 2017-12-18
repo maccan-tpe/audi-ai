@@ -9,4 +9,12 @@ footer {
     p{
         margin: 0;
     }
+    @media screen and (max-width: 1000px) {
+        font-size: em(16,18);
+        transform: scale(0.75);
+        bottom: em(12,12);
+        p{
+            margin: 0 auto;
+        }
+    }
 }

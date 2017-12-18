@@ -32,6 +32,16 @@
         position: absolute;
         z-index: 2;
         text-shadow: 0 0 1px #000;
+        
+        @media screen and (max-width: 1000px) {
+            
+            transform: scale(0.8);
+            margin-top: per(-50, 640);
+            margin-left: per(40, 640);
+            top: 50%;
+            left: 0;
+            width: auto;
+        }
     }
     .arrow{
         left: 50%;
@@ -49,6 +59,14 @@
             .kvarrow2{fill-rule:evenodd;clip-rule:evenodd;fill:#bb0a30;}
             @include SubItem();
         }
+        @media screen and (max-width: 1000px) {
+            margin-top: per(235, 640);
+            margin-left: per(-50, 640);
+            top: 50%;
+            left: 0;
+            width: per(170, 640);
+            padding-top: per(9, 640);
+        }
     }
     .kv-btn{
         font-size: em(14,18);
@@ -61,6 +79,13 @@
         position: absolute;
         z-index: 2;
         text-shadow: 0 0 1px #000;
+        @media screen and (max-width: 1000px) {
+            font-size: em(14,16);
+            margin-top: per(220, 640);
+            margin-left: per(135, 640);
+            top: 50%;
+            left: 0;
+        }
         &:hover{
             .eclipse{
                 opacity: inherit;
@@ -84,6 +109,10 @@
                 .eclise20{
                     opacity: 0.2;
                 }
+            }
+            @media screen and (max-width: 1000px) {
+                opacity: inherit;
+                filter: none;
             }
         }
     }
@@ -109,6 +138,10 @@
     $time: 14s; 
     $base-hue: 206; // change for diff colors (180 is nice)
     
+    .kv640{
+        @include SubItem();
+        background: center/100% auto no-repeat;
+    }
     
     canvas {
         display: block;

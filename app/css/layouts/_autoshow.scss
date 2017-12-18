@@ -32,6 +32,18 @@
                 @include SubItem();
             }
         }
+        @media screen and (max-width: 1000px) {
+            &.visible-xs{
+                height:0;
+                padding-top: per(1106, 640);
+                figure.loaded{
+                    filter: none;
+                    opacity: inherit;
+                    height: 100%;
+
+                }
+            }
+        }
     }
     .title{
         top: 50%;
@@ -41,9 +53,22 @@
         z-index: 2;
         position: absolute;
         width: per(777,1920);
+        @media screen and (max-width: 1000px) {
+            top: 0;
+            left: 0;
+            margin: per(155, 640) 0 0 per(50, 640);
+            font-size: 1em;
+            white-space: nowrap;
+            position: relative;
+            width: auto;
+            height: auto;
+        }
         h2{
             margin: 0 0 1em;
             white-space: nowrap;
+            @media screen and (max-width: 1000px) {
+                font-size: em(30,16);
+            }
         }
         .background{
             top:-10%;
@@ -68,9 +93,20 @@
         opacity: inherit;
         backface-visibility: hidden;
         transition: 0.2s opacity 0s, 0s filter 0s;
+        @media screen and (max-width: 1000px) {
+            width:per(540, 640);
+            margin: 0 auto;
+            position: relative;
+            top: 0;
+            height: auto;
+        }
         &.idle{
             filter: blur(1px);
             opacity: 0;
+            @media screen and (max-width: 1000px) {
+                filter: none;
+                opacity: inherit;
+            }
 
         }
         &:before{
@@ -141,11 +177,27 @@
 
     .summary{
         @include Item(1920, 300, 'auto', 90, 90, 'auto', 1920, 'fit','absolute');
+        
+        @media screen and (max-width: 1000px) {
+            margin: 0 auto;
+            padding-top: 0;
+            position: relative;
+            width: per(540, 640);
+            height: auto;
+            .bg{
+                @include SubItem();
+                background: center/ cover;
+            }
+            &:before{
+                display: none;
+            }
+        }
         .subitem{
             transform: translateX(1%);
             opacity: 0;
             filter: grayscale(100%);
             transition: 0.15s linear 0s;
+            transition: filter 0.15s linear 0s, opacity 0.15s linear 0s, padding 0s linear 0s, height 0s linear 0s;
             font-size: em(24,18);
             color: #bb0a30;
             white-space: nowrap;
@@ -157,6 +209,33 @@
                 font-size: em(48,24);
                 white-space: nowrap;
                 text-shadow: 0 0 1px currentColor;
+            }
+            @media screen and (max-width: 1000px) {
+                font-size: em(12,16);
+                position: relative;
+                padding-top: per(0, 640);
+                height: 0;
+                overflow: hidden;
+                // transition-duration: 0s;
+                h4{
+                    font-size: em(24,12);
+                }
+                >aside{
+                    @include SubItem();
+                    padding: 1em;
+                }
+                p{
+                    position: relative;
+                    &:before{
+                        content: '';
+                        position: absolute;
+                        width: 1.6em;
+                        height: 5px;
+                        right: 0;
+                        bottom: -1em;
+                        background: #bb0a30;
+                    }
+                }
             }
         }
         svg,img{
@@ -180,6 +259,9 @@
             opacity: 0.6;
             position: relative;
             transition-duration: 0.2s; 
+            @media screen and (max-width: 1000px) {
+                display: none;
+            }
             &:hover{
                 background: #bb0a30;
             }
@@ -282,8 +364,35 @@
     #autoshow0401:checked ~ .viewport [data-id=autoshow0401]{
         filter: none;
         opacity: inherit;
-        transition: 0.25s linear 0.3s;
+        transition: filter 0.25s linear 0.3s, opacity 0.25s linear 0.3s, padding 0s linear 0s, height 0s linear 0s;
         transform: none;
         z-index: 1;
     }
+
+    @media screen and (max-width: 1000px) {
+        #autoshow01:checked ~ .viewport [data-id=autoshow0101],
+        #autoshow02:checked ~ .viewport [data-id=autoshow0201],
+        #autoshow02:checked ~ .viewport [data-id=autoshow0202],
+        #autoshow02:checked ~ .viewport [data-id=autoshow0203],
+        #autoshow02:checked ~ .viewport [data-id=autoshow0204],
+        #autoshow02:checked ~ .viewport [data-id=autoshow0205],
+        #autoshow02:checked ~ .viewport [data-id=autoshow0206],
+        #autoshow02:checked ~ .viewport [data-id=autoshow0207],
+        #autoshow02:checked ~ .viewport [data-id=autoshow0208],
+        #autoshow02:checked ~ .viewport [data-id=autoshow0209],
+        #autoshow03:checked ~ .viewport [data-id=autoshow0301],
+        #autoshow03:checked ~ .viewport [data-id=autoshow0302],
+        #autoshow04:checked ~ .viewport [data-id=autoshow0401]{
+            filter: none;
+            opacity: inherit;
+            transition: filter 0.25s linear 0.3s, opacity 0.25s linear 0.3s, padding 0s linear 0s, height 0s linear 0s;
+            transform: none;
+            padding-top: per(304, 640);
+            z-index: 1;
+            &+.subitem{
+                margin-top: 1em;
+            }
+        }
+    }
+    
 }
