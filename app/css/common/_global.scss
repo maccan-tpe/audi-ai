@@ -83,6 +83,25 @@
             }
         }
     }
+    .main-content{
+        @include SubItem();
+        filter: none;
+        opacity: 1;
+        transition: 1s opacity 0s, 1s transform 0s, 0s filter 0s;
+
+        &.translateLeft{
+            filter: blur(5px) grayscale(100%);
+            opacity: 0;
+            transform: translateX(50%);
+            transition: 1s opacity 0s, 1s transform 0s, 1s filter 0s;
+        }
+        &.translateRight{
+            filter: blur(5px) grayscale(100%);
+            opacity: 0;
+            transform: translateX(-50%);
+            transition: 1s opacity 0s, 1s transform 0s, 1s filter 0s;
+        }
+    }
 }
 
 

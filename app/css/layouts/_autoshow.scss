@@ -64,12 +64,21 @@
         letter-spacing: 0;
         word-spacing: 0;
         overflow: visible;
+        filter: none;
+        opacity: inherit;
+        backface-visibility: hidden;
+        transition: 0.2s opacity 0s, 0s filter 0s;
+        &.idle{
+            filter: blur(1px);
+            opacity: 0;
+
+        }
         &:before{
             content:'';
             width: 100%;
             display: block;
             border-bottom: 2px solid currentColor;
-            margin-top: 2.75em;
+            margin-top: 3.4em;
             opacity: 0.3;
             position: absolute;
         }
@@ -88,6 +97,7 @@
                 overflow: visible;
                 &:after{
                     content:'';
+                    margin-top: em(10, 18);
                     width: 100%;
                     display: block;
                     border-bottom: 2px solid currentColor;
@@ -97,6 +107,7 @@
                 span{
                     filter: none;
                     opacity: inherit;
+                    transition: 0.4s opacity 0s, 0s filter 0s;
                 }
             }
         }
@@ -138,6 +149,7 @@
             font-size: em(24,18);
             color: #bb0a30;
             white-space: nowrap;
+            font-weight: bold;
             >*{
                 white-space: normal;
             }
@@ -148,7 +160,8 @@
             }
         }
         svg,img{
-            height: 1em;
+            height: em(18, 16);
+            width: em(27, 16);
             margin-top: -0.25em;
             margin-right: 0.5em;
             path {
@@ -156,12 +169,13 @@
             }
         }
         a{
+            font-weight: 300;
             margin-top: 1em;
             word-spacing: 0.5em;
-            line-height: 3em;
+            line-height: em(45, 16);
             background: #840923;
-            padding: 0 2em;
-            font-size: em(16,18);
+            padding: 0 em(34.25,16);
+            font-size: em(16,24);
             display: inline-block;
             opacity: 0.6;
             position: relative;
@@ -186,7 +200,13 @@
     #autoshow01:checked ~ .viewport label[for=autoshow01] span,
     #autoshow02:checked ~ .viewport label[for=autoshow02] span,
     #autoshow03:checked ~ .viewport label[for=autoshow03] span,
-    #autoshow04:checked ~ .viewport label[for=autoshow04] span,
+    #autoshow04:checked ~ .viewport label[for=autoshow04] span,{
+        filter: none;
+        opacity: inherit;
+        height: auto;
+        z-index: 1;
+        transition: 0.4s opacity 0s, 0s filter 0s;
+    }
     #autoshow01:checked ~ .viewport .submenu01,
     #autoshow02:checked ~ .viewport .submenu02,
     #autoshow03:checked ~ .viewport .submenu03,
@@ -195,6 +215,8 @@
         opacity: inherit;
         height: auto;
         z-index: 1;
+        margin-top: em(28,18);
+        transition: 0.4s opacity 0s, 0s filter 0s, 0s margin 0s;
     }
     #autoshow0101:checked ~ .viewport [for=autoshow0101],
     #autoshow01011:checked ~ .viewport [for=autoshow01011],

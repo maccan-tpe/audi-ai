@@ -7,7 +7,20 @@
 /*global app, TweenMax*/
 app.partial.kv = function($, container){
 	container.on('page:update' , function(page, menu){
+		if(!container.hasClass('loaded')){
+			container.trigger('page:load');
+		}
+	});
+	container.on('page:load' , function(page, menu){
 		container.addClass('loaded');
+		$('[data-spa]').unbind('click').on('click', function(e){
+			if(!app.spa.supported){
+				return true;
+			}else{
+				app.spa.loadPage($(this).data('spa'));
+				return false;
+			}
+		});
 		$(window).on('resize', function(){
 			var viewport = {
 				width: $(window).width(),
@@ -33,6 +46,7 @@ app.partial.kv = function($, container){
 			});
 		});
 		
+		// console.log('loaded:');
 		var players = {
 			loop: {
 				vid: $('#player').data('vid'),
@@ -41,6 +55,7 @@ app.partial.kv = function($, container){
 				autoplay: 1,
 				height: 1080,
 				width: 1920,
+				origin: location.href,
 				ready: function(){
 					// console.log(players.loop.player.playVideo)
 					// players.loop.player.playVideo();
@@ -50,10 +65,9 @@ app.partial.kv = function($, container){
 		};
 	
 
-		window.players = players;
+		// window.players = players;
 
-		var loop;
-		// $('.vbox').venobox({overlayClose: false});
+		
 		function onYouTubeIframeAPIReady() {
 			$('#player', container).addClass('fade');
 
@@ -71,6 +85,7 @@ app.partial.kv = function($, container){
 					iv_load_policy: 3,
 					enablejsapi: 1,
 					version: 3,
+					origin: video.origin,
 					vq: 'hd1080'
 				};
 				var pl = new YT.Player(video.elementId, {
@@ -78,6 +93,7 @@ app.partial.kv = function($, container){
 					playerVars: playerVars,
 					height: video.height,
 					width: video.width,
+					origin: video.origin,
 					events: {
 						onReady: typeof video.ready == 'function' ? video.ready : function(){},
 						onStateChange: typeof video.stateChange == 'function' ? video.ready : function(){}
@@ -85,25 +101,34 @@ app.partial.kv = function($, container){
 				});
 				video.player = pl;
 				video.playerVars = playerVars;
+				// pl.playVideo();
+				// pl.mute();
+				// console.log('pl:', pl);
 
 			});
 
-			players.loop = players.loop.player;
+			var kvplayer = players.loop.player;
+			// kvplayer.frac = kvplayer.getVideoLoadedFraction();
+			// kvplayer.totalTime = kvplayer.getDuration();
+			// kvplayer.currentTime = kvplayer.getCurrentTime();
+			// kvplayer.played = currentTime/totalTime * 100;
+			// console.log('kvplayer:', kvplayer);
+
 			var wait4loop = setInterval(function(){
-				if(!players.loop || !players.loop.getVideoLoadedFraction){
+				if(!kvplayer || !kvplayer.getVideoLoadedFraction){
 					return;
 				}
-				if($(window).width() <= 768 || $('html.mobile').length){
-					clearInterval(wait4loop);
-				}
-				var frac = players.loop.getVideoLoadedFraction();
-				players.loop.mute();
+				kvplayer.mute();
+				kvplayer.frac = kvplayer.getVideoLoadedFraction();
+				kvplayer.totalTime = kvplayer.getDuration();
+				kvplayer.currentTime = kvplayer.getCurrentTime();
+				kvplayer.played = kvplayer.currentTime/kvplayer.totalTime * 100;
 				// console.log(frac);
-				if(frac >= 0.2){
-					players.loop.pauseVideo();	
-					players.loop.seekTo(0);
-					clearInterval(wait4loop);
-					players.loop.playVideo();
+				if(kvplayer.frac >= 0.05 && !$('#player', container).hasClass('in')){
+					kvplayer.pauseVideo();	
+					kvplayer.seekTo(0);
+					// clearInterval(wait4loop);
+					kvplayer.playVideo();
 					setTimeout(function(){
 						$('html').removeClass('loading');
 						$('#player', container).addClass('in');
@@ -112,7 +137,39 @@ app.partial.kv = function($, container){
 						}
 					}, 200)
 				}
-			}, 100);
+				$('.duration .played', container).width(kvplayer.played + '%');
+				// console.log('kvplayer:', kvplayer);
+				// console.log('frac:', kvplayer.frac*100+'%',',totalTime:', kvplayer.totalTime+'s',',currentTime:', kvplayer.currentTime+'s',',played:', kvplayer.played+'%');
+				// console.log('kvplayer.getVideoLoadedFraction:', kvplayer.getVideoLoadedFraction+'',',kvplayer.getDuration:', kvplayer.getDuration+'',',kvplayer.getCurrentTime:', kvplayer.getCurrentTime+'');
+				// console.log('kvplayer.getVideoLoadedFraction:', kvplayer.getVideoLoadedFraction(),',kvplayer.getDuration:', kvplayer.getDuration(),',kvplayer.getCurrentTime:', kvplayer.getCurrentTime());
+				if(kvplayer.frac!=null && kvplayer.frac < 1){
+					$('.duration .downloaded', container).width(kvplayer.frac*100 + '%');
+				}
+				if(kvplayer.played > 98.5){
+					kvplayer.pauseVideo();	
+					kvplayer.seekTo(0);
+					// clearInterval(wait4loop);
+					kvplayer.playVideo();
+				}
+			}, 250);
+
+			if($(window).width() <= 768 || $('html.mobile').length || !players.loop.vid){
+				$('html').removeClass('loading');
+				clearInterval(wait4loop);
+			}
+			
+
+			// $('.duration', container).unbind('click').on('click', function(e){
+			// 	var percent = (e.clientX - $(this).offset().left) / $('.duration .downloaded', container).width();
+			// 	var to = Math.floor(percent * kvplayer.totalTime);
+			// 	$('.duration .played', container).width(percent*100 + '%');
+
+			// 	kvplayer.seekTo(to, true);
+				
+			// 	e.stopPropagation();
+			// 	e.preventDefault();
+			// 	return false;
+			// });
 		}
 
 		window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;

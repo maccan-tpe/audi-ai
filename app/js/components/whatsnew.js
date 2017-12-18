@@ -7,7 +7,21 @@
 /*global app, TweenMax*/
 app.partial.whatsnew = function($, container){
 	container.on('page:update' , function(page, menu){
-        container.addClass('loaded');
-        $('html').removeClass('loading');
+		$('html').removeClass('loading');
+		if(!container.hasClass('loaded')){
+			container.trigger('page:load');
+		}
+	});
+	container.on('page:load' , function(page, menu){
+		$('html').removeClass('loading');
+		container.addClass('loaded');
+		$('[data-spa]').unbind('click').on('click', function(e){
+			if(!app.spa.supported){
+				return true;
+			}else{
+				app.spa.loadPage($(this).data('spa'));
+				return false;
+			}
+		});
 	});
 };

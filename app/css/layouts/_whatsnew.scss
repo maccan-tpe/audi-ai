@@ -98,21 +98,21 @@
                 .arrow-tri2{fill-rule:evenodd;clip-rule:evenodd;fill:#BB0A30;}
             }
         }
-        .eclipse{
-            width: em(57,16);
-            padding-top: em(49, 16);
-            margin-top: 6.8em;
-            position: absolute;
-            top: 0;
-            left: em(665, 16);
-            img, svg{
-                @include SubItem();
-                .eclise,.eclise20{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#BB0A30;stroke-miterlimit:10;}
-                .eclise20{
-                    opacity: 0.2;
-                }
-            }
-        }
+        // .eclipse{
+        //     width: em(57,16);
+        //     padding-top: em(49, 16);
+        //     margin-top: 6.8em;
+        //     position: absolute;
+        //     top: 0;
+        //     left: em(665, 16);
+        //     img, svg{
+        //         @include SubItem();
+        //         .eclise,.eclise20{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#BB0A30;stroke-miterlimit:10;}
+        //         .eclise20{
+        //             opacity: 0.2;
+        //         }
+        //     }
+        // }
         a.btn-survey{
             top: 50%;
             left: 0;
@@ -121,6 +121,31 @@
             color: #bb0a30;
             font-size: em(16,18);
             white-space: nowrap;
+            &:hover{
+                .eclipse{
+                    opacity: inherit;
+                    filter: none;
+                    transition-property: opacity;
+                }
+            }
+            .eclipse{
+                position: absolute; 
+                left: em(-120, 18);
+                top: em(-10, 18);
+                width: em(183, 18);
+                height: em(49, 18);
+                opacity: 0;
+                filter: blur(5px);
+                transition-duration: 0.15s;
+                transition-property: filter, opacity;
+                img, svg{
+                    @include SubItem();
+                    .eclise,.eclise20{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#BB0A30;stroke-miterlimit:10;}
+                    .eclise20{
+                        opacity: 0.2;
+                    }
+                }
+            }
         }
         a.btn-autoshow{
             top: 50%;
@@ -130,6 +155,31 @@
             position: absolute;
             font-size: em(16,18);
             white-space: nowrap;
+            &:hover{
+                .eclipse{
+                    opacity: inherit;
+                    filter: none;
+                    transition-property: opacity;
+                }
+            }
+            .eclipse{
+                position: absolute; 
+                left: em(-120, 18);
+                top: em(-10, 18);
+                width: em(183, 18);
+                height: em(49, 18);
+                opacity: 0;
+                filter: blur(5px);
+                transition-duration: 0.15s;
+                transition-property: filter, opacity;
+                img, svg{
+                    @include SubItem();
+                    .eclise,.eclise20{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#BB0A30;stroke-miterlimit:10;}
+                    .eclise20{
+                        opacity: 0.2;
+                    }
+                }
+            }
         }
     }
 }

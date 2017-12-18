@@ -7,8 +7,15 @@
 /*global app, TweenMax*/
 app.partial.sphere = function($, container){
 	container.on('page:update' , function(page, menu){
+		if(!container.hasClass('loaded')){
+			container.trigger('page:load');
+		}
+	});
+	container.on('page:load' , function(page, menu){
         container.addClass('loaded');
-        sphere();
+        try{
+            sphere();
+        }catch(e){}
 	});
 	
     var sphere, fnAddEventListener, fnRequestAnimationFrame;
@@ -237,24 +244,27 @@ app.partial.sphere = function($, container){
     
         })();
         fnRender = function() {
-            var iCount, p;
-            // ctxRender.fillStyle = "#000";
-            // ctxRender.fillRect(0, 0, w, h);
-            ctxRender.clearRect(0, 0, nCanvasRender.width, nCanvasRender.height);
-            ctxRender.beginPath();
-            p = oRender.pFirst;
-            iCount = 0;
-            while (p != null) {
-                // if (window.CP.shouldStopExecution(1)){break;}
-                ctxRender.fillStyle = "rgba(" + window.aColor.join(',') + ',' + p.fAlpha.toFixed(4) + ")";
+            try{
+                var iCount, p;
+                // ctxRender.fillStyle = "#000";
+                // ctxRender.fillRect(0, 0, w, h);
+                ctxRender.clearRect(0, 0, nCanvasRender.width, nCanvasRender.height);
                 ctxRender.beginPath();
-                ctxRender.arc(p.fProjX, p.fProjY, p.fRadiusCurrent, 0, 2 * fPI, false);
-                ctxRender.closePath();
-                ctxRender.fill();
-                p = p.pNext;
-                iCount += 1;
-            }
-            // window.CP.exitedLoop(1);
+                p = oRender.pFirst;
+                iCount = 0;
+                while (p != null) {
+                    // if (window.CP.shouldStopExecution(1)){break;}
+                    ctxRender.fillStyle = "rgba(" + window.aColor.join(',') + ',' + p.fAlpha.toFixed(4) + ")";
+                    ctxRender.beginPath();
+                    ctxRender.arc(p.fProjX, p.fProjY, p.fRadiusCurrent, 0, 2 * fPI, false);
+                    ctxRender.closePath();
+                    ctxRender.fill();
+                    p = p.pNext;
+                    iCount += 1;
+                }
+                // window.CP.exitedLoop(1);
+
+            }catch(e){}
     
         };
         fnNextFrame = function() {
@@ -293,20 +303,20 @@ app.partial.sphere = function($, container){
             });
         };
         fnNextFrame();
-        gui = new dat.GUI();
-        gui.add(window, 'fGrowDuration').min(10).max(500).step(1);
-        gui.add(window, 'fWaitDuration').min(10).max(500).step(1);
-        gui.add(window, 'fShrinkDuration').min(10).max(500).step(1);
-        gui.add(window, 'iPerspective').min(150).max(1000).step(1);
-        gui.add(window, 'iNewParticlePerFrame').min(1).max(20).step(1);
-        gui.add(window, 'iFramesToRotate').min(50).max(2500).step(50).onChange(function() {
-            return fVX = (2.0 * fPI) / window.iFramesToRotate;
-        });
-        gui.addColor(window, 'aColor').onChange(function() {
-            window.aColor[0] = ~~window.aColor[0];
-            window.aColor[1] = ~~window.aColor[1];
-            return window.aColor[2] = ~~window.aColor[2];
-        });
+        // gui = new dat.GUI();
+        // gui.add(window, 'fGrowDuration').min(10).max(500).step(1);
+        // gui.add(window, 'fWaitDuration').min(10).max(500).step(1);
+        // gui.add(window, 'fShrinkDuration').min(10).max(500).step(1);
+        // gui.add(window, 'iPerspective').min(150).max(1000).step(1);
+        // gui.add(window, 'iNewParticlePerFrame').min(1).max(20).step(1);
+        // gui.add(window, 'iFramesToRotate').min(50).max(2500).step(50).onChange(function() {
+        //     return fVX = (2.0 * fPI) / window.iFramesToRotate;
+        // });
+        // gui.addColor(window, 'aColor').onChange(function() {
+        //     window.aColor[0] = ~~window.aColor[0];
+        //     window.aColor[1] = ~~window.aColor[1];
+        //     return window.aColor[2] = ~~window.aColor[2];
+        // });
         if (window.innerWidth < 1000) {
             gui.close();
             window.iNewParticlePerFrame = 5;

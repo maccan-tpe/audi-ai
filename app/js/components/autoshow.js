@@ -7,8 +7,29 @@
 /*global app, TweenMax*/
 app.partial.autoshow = function($, container){
 	container.on('page:update' , function(page, menu){
+		if(!container.hasClass('loaded')){
+			container.trigger('page:load');
+		}
+	});
+	container.on('page:load' , function(page, menu){
+		var idleTick = 0;
+		$(container).on('mousemove', function(){
+			clearTimeout(idleTick);
+			$('.menu', container).removeClass('idle');
+			idleTick = setTimeout(function(){
+				$('.menu', container).addClass('idle');;
+			}, 2000);
+		});
+		$('[data-spa]').unbind('click').on('click', function(e){
+			if(!app.spa.supported){
+				return true;
+			}else{
+				app.spa.loadPage($(this).data('spa'));
+				return false;
+			}
+		});
 		container.addClass('loaded');
-		// $('html').removeClass('loading');
+		$('html').addClass('loading');
 		$(window).on('resize', function(){
 			var viewport = {
 				width: $(window).width(),
@@ -175,16 +196,30 @@ app.partial.autoshow = function($, container){
 					clearInterval(wait4loop);
 				}
 				var frac = players.loop.getVideoLoadedFraction();
+				players.loop.frac = players.loop.getVideoLoadedFraction();
+				players.loop.totalTime = players.loop.getDuration();
+				players.loop.currentTime = players.loop.getCurrentTime();
+				players.loop.played = players.loop.currentTime/players.loop.totalTime * 100;
+				// console.log('players.loop:', players.loop);
+				// console.log('frac:', players.loop.frac*100+'%',',totalTime:', players.loop.totalTime+'s',',currentTime:', players.loop.currentTime+'s',',played:', players.loop.played+'%');
+				// console.log('players.loop.getVideoLoadedFraction:', players.loop.getVideoLoadedFraction+'',',players.loop.getDuration:', players.loop.getDuration+'',',players.loop.getCurrentTime:', players.loop.getCurrentTime+'');
+				// console.log('players.loop.getVideoLoadedFraction:', players.loop.getVideoLoadedFraction(),',players.loop.getDuration:', players.loop.getDuration(),',players.loop.getCurrentTime:', players.loop.getCurrentTime());
 				players.loop.mute();
-				if(frac >= 0.2){
+				if(players.loop.played > 98.5){
 					players.loop.pauseVideo();	
 					players.loop.seekTo(0);
-					clearInterval(wait4loop);
+					// clearInterval(wait4loop);
+					players.loop.playVideo();
+				}
+				if(frac >= 0.2 && !$('#player', container).hasClass('in')){
+					players.loop.pauseVideo();	
+					players.loop.seekTo(0);
+					// clearInterval(wait4loop);
 					players.loop.playVideo();
 					setTimeout(function(){
 						$('html').removeClass('loading');
 						$('#player', container).addClass('in');
-						console.log(location.hash == '#A8L');
+						// console.log(location.hash == '#A8L');
 						if(location.hash == '#A8L'){
 							$('#autoshow01011').trigger('click');
 							players.loop.pauseVideo();	

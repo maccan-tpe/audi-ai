@@ -7,12 +7,13 @@ header {
 	}
 	nav{
 		float: right;
-		margin-top: em(40, 18);
-		margin-right: em(40, 18);
+		font-size: em(16, 18);
+		margin-top: em(40, 16);
+		margin-right: em(40, 16);
 		&:before{
 		}
 		a{
-			text-shadow: 0 0 3px #000;
+			// text-shadow: 0 0 3px #000;
 			&:hover, &.active{
 				@media screen and (max-width: 1000px) {
 				}
