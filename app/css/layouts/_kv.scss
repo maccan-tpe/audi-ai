@@ -21,8 +21,18 @@
         }
     }
     .acircle{
-        background: center/#{per(1622,1920)};
-        @include SubItem();
+        // background: center/#{per(1622,1920)};
+        // @include SubItem();
+        // z-index: 2;
+    }
+    .audiai{
+        top: 50%;
+        left: 50%;
+        width: per(932, 1920);
+        background: center/ cover;
+        padding-top: per(226, 1920);
+        margin:  per(-149, 1920) 0 0 per(-530, 1920);
+        position: absolute;
         z-index: 2;
     }
     // best in chrome
@@ -36,8 +46,8 @@
     canvas {
         display: block;
         margin: 0 auto;
-        transform: scale(calc(100vw / 700));
-        z-index: 2;
+        // transform: scale(calc(100vw / 700));
+        z-index: 1;
         // filter: blur(1px);
         // background: radial-gradient(
         //     circle,
@@ -45,8 +55,11 @@
         //     rgba(255, 255, 255, 0.15) 20%, 
         //     transparent 60%
         // );
-        animation: rotate 60s infinite;
+        // animation: rotate 60s infinite;
         position: absolute;
+    }
+    #c{
+        display: none;
     }
 
     @keyframes rotate{

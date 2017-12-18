@@ -33,7 +33,18 @@ app.partial.autoshow = function($, container){
 				marginTop: yt.height* -0.5
 			});
 		});
-
+		$('header nav a:eq(1)').on('click', function(e){
+			$('#autoshow0101').trigger('click');
+			e.stopPropagation();
+			e.preventDefault();
+			return false;
+		});
+		$('header nav a:eq(2)').on('click', function(e){
+			$('#autoshow01011').trigger('click');
+			e.stopPropagation();
+			e.preventDefault();
+			return false;
+		});
 		var players = {
 			loop: {
 				vid: $('#player').data('vid'),
@@ -173,8 +184,10 @@ app.partial.autoshow = function($, container){
 					setTimeout(function(){
 						$('html').removeClass('loading');
 						$('#player', container).addClass('in');
+						console.log(location.hash == '#A8L');
 						if(location.hash == '#A8L'){
 							$('#autoshow01011').trigger('click');
+							players.loop.pauseVideo();	
 						}
 					}, 200)
 				}
@@ -192,9 +205,6 @@ app.partial.autoshow = function($, container){
 				players.loop.playVideo();
 			}else{
 				players.loop.pauseVideo();
-			}
-			if(this.id === 'autoshow01011'){
-				$('.vbox').trigger('click');
 			}
 		});
 

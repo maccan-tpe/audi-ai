@@ -8,8 +8,9 @@
     "bootstrap-sass": "^3.3.7",
     "gsap": "^1.20.2",
     "jquery": "1.12",
-    "venobox": "^1.8.2",
-    "animate.css": "^3.5.2"
+    "animate.css": "^3.5.2",
+    "stats.js": "*",
+    "dat.gui": "*"
   },
   "overrides": {
     "slick-carousel": {
