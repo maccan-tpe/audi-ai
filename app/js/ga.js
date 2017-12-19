@@ -5,7 +5,7 @@
 	key-spacing ,curly, no-shadow, no-return-assign, no-redeclare, no-unused-vars,
 	eqeqeq, no-extend-native, quotes , no-inner-declarations*/
 /*global app, ga, $ */
-app.partial.ga = function(){
+app.partial.ga = function($, container){
 	var ismobile = $('html').hasClass('mobile') || $('html').hasClass('tablet');
 	if(ismobile){
 		$('[data-ga-m]').on('click', function(e){
