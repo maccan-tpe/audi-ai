@@ -9,6 +9,13 @@
     filter: blur(10px) grayscale(100%);
     height: 0;
     transition: 0.5s opacity 0.4s, 0.3s filter 0s;
+    @media screen and (max-width: 1000px) {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        left: 0;
+        margin: 0;
+    }
 
     .wrap{
         position: absolute;
@@ -17,6 +24,25 @@
         width: per(940, 1260);
         margin-right: per(240, 1260);
         padding-bottom: 5em;
+        @media screen and (max-width: 1000px) {
+            position: relative;
+            width: 100%;
+            margin: 0;
+            height: auto;
+            .background{
+                width: 100%;
+                padding-top: per(5765, 640);
+                background: left top/cover;
+                &~figure{
+                    background: none!important;
+                }
+                &~.youtube, &~figure .youtube{
+                    &:before,&:after{
+                        display: none;
+                    }
+                }
+            }
+        }
     }
     .youtube{
         width: 100%;
@@ -173,12 +199,22 @@
         transition-duration: 0.3s;
     }
 
+    .poster1{
+        width: 100%;
+        padding-top: per(360, 640);
+        display: block;
+        height: 0;
+        img{
+            @include SubImgW();
+        }
+    }
+
     .back{
         width: em(41, 18);
         height: em(30, 18);
         position: fixed;
-        top: 5em;
-        right: per(1230, 1920);
+        top: 1em;
+        right: 1em;
         cursor: pointer;
         filter: drop-shadow(0 0 1px #000);
         img,svg{
