@@ -12,6 +12,9 @@ app.partial.autoshow = function($, container){
 		}
 	});
 	container.on('page:load' , function(page, menu){
+		if(location.hash == '#A8L'){
+			$('#autoshow01011').trigger('click');
+		}
 		var idleTick = 0;
 		$(container).on('mousemove', function(){
 			clearTimeout(idleTick);
@@ -137,7 +140,7 @@ app.partial.autoshow = function($, container){
 			v.player.pauseVideo();
 			$('#' + v.elementId).parent().unbind('click').on('click', function(){
 				var playing = $('#' + v.elementId).parent().attr('data-playing');
-				console.log(playing);
+				// console.log(playing);
 				if(playing != 1){
 					$('#' + v.elementId).parent().attr('data-playing', 1);
 					v.player.playVideo();
@@ -241,7 +244,7 @@ app.partial.autoshow = function($, container){
 
 		$('[name=autoshowDetail]').on('click', function(){
 			if(this.id === 'autoshow0101'){
-				players.loop.playVideo();
+				// players.loop.playVideo();
 			}else{
 				players.loop.pauseVideo();
 			}

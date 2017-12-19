@@ -102,31 +102,49 @@
     }
     .km{
         width: 100%;
-        padding-top: per(340, 940);
+        padding-top: 0;
+        height: auto;
         position: relative;
         overflow: hidden;
         background: center/ cover;
+        @media screen and (max-width: 1000px) {
+            padding: 0;
+            margin-top: per(0,640);
+            line-height: 2;
+        }
+        figcaption{
+            position: relative;
+        }
     }
     .look{
         margin-top: 1em;
         width: 100%;
         padding-top: per(682, 940);
         position: relative;
-        overflow: hidden;
+        // overflow: hidden;
         background: center/ cover;
-        .youtube{
-            position: absolute;
-            top: 0;
-            margin-top: per(340, 940);
-            width: per(605, 940);
-            padding-top: per(343, 940);
+        @media screen and (max-width: 1000px) {
+            padding: 0;
+            height: aut0;
+        }
+        figure{
+            @media screen and (max-width: 1000px) {
+                width: 100%!important;
+                position: relative!important;
+                padding: 0!important;
+                margin: 0!important;
+                height: auto!important;
+            }
         }
         figcaption{
-            height: per(343, 682);
-            margin-left: per(340, 940);
-            width: per(600, 940);
             &:before, aside{
                 vertical-align: middle;
+            }
+            @media screen and (max-width: 1000px) {
+                padding: 0;
+                height: aut0;
+                margin: per(50, 640) auto;
+                width: per(540, 640);
             }
         }
     }
@@ -135,8 +153,12 @@
         width: 100%;
         padding-top: per(682, 940);
         position: relative;
-        overflow: hidden;
+        // overflow: hidden;
         background: center/ cover;
+        @media screen and (max-width: 1000px) {
+            padding: 0;
+            height: aut0;
+        }
         .youtube{
             position: absolute;
             top: 0;
@@ -145,11 +167,14 @@
             padding-top: per(340, 940);
         }
         figcaption{
-            height: per(343, 682);
-            margin-left: per(340, 940);
-            width: per(600, 940);
             &:before, aside{
                 vertical-align: middle;
+            }
+            @media screen and (max-width: 1000px) {
+                padding: 0;
+                height: auto;
+                margin: per(50, 640) auto;
+                width: per(540, 640);
             }
         }
     }
@@ -157,6 +182,10 @@
         @include SubItem();
         white-space: nowrap;
         transition-duration: 0s;
+        @media screen and (max-width: 1000px) {
+            position: relative;
+            height: auto;
+        }
         &:before{
             content:'';
             display: inline-block;
@@ -170,6 +199,12 @@
             display: inline-block;
             white-space: normal;
             padding: em(40,18) em(50, 18);
+            @media screen and (max-width: 1000px) {
+                padding: 0;
+                width: per(540, 640);
+                margin: 0 auto;
+                display: block;
+            }
         }
         h4{
             font-size: em(36,18);
@@ -178,12 +213,26 @@
             
             display: inline-block;
             width: auto;
+            @media screen and (max-width: 1000px) {
+                font-size: em(30, 16);
+                font-weight: bold;
+                margin-top: 0;
+            }
         }
         h5{
             font-size: em(24,18);
+            @media screen and (max-width: 1000px) {
+                font-size: em(18, 16);
+                margin-bottom: 1em;
+                line-height: 1.6;
+            }
         }
         P{
             font-size: em(16,18);
+            @media screen and (max-width: 1000px) {
+                font-size: em(12, 16);
+                line-height: 2;
+            }
         }
         ol{
             font-size: em(16,18);
@@ -199,13 +248,67 @@
         transition-duration: 0.3s;
     }
 
-    .poster1{
-        width: 100%;
-        padding-top: per(360, 640);
-        display: block;
-        height: 0;
-        img{
-            @include SubImgW();
+    figure.inter{
+        opacity: 0.75;
+        transition-duration: 0.3s;
+        &:hover{
+            opacity: 1;
+            box-shadow: 0 0 0 2px #b40404;
+            z-index: 3;
+            @media screen and (max-width: 1000px) {
+                box-shadow: none;
+            }
+        }
+        &.lt,
+        &.rt,
+        &.lb,
+        &.rb{
+            position: absolute;
+            padding-top: per(340, 940);
+            width: per(340, 940);
+            background: center/cover;
+            @media screen and (max-width: 1000px) {
+                padding-top: 0;
+                width: 100%;
+            }
+            &.w{
+                width: per(600, 940);
+                @media screen and (max-width: 1000px) {
+                    transform: none;
+                    width: 100%;
+                }
+            }
+            &:hover{
+                width: per(600, 940);
+                z-index: 2;
+                transform: scale(1.02);
+                @media screen and (max-width: 1000px) {
+                    transform: none;
+                    width: 100%;
+                }
+            }
+        }
+        &.lt{
+            left: 0;
+            top: 0;
+        }
+        &.rt{
+            right: 0;
+            top: 0;
+        }
+        &.lb{
+            left: 0;
+            bottom: 0;
+        }
+        &.rb{
+            right: 0;
+            bottom: 0;
+        }
+        &.hidebg-xs{
+            background: none!important;
+        }
+        @media screen and (max-width: 1000px) {
+            opacity: 1;
         }
     }
 
@@ -213,12 +316,61 @@
         width: em(41, 18);
         height: em(30, 18);
         position: fixed;
-        top: 1em;
-        right: 1em;
+        top: 100px;
+        margin-left: -250px;
+        left: 50%;
         cursor: pointer;
         filter: drop-shadow(0 0 1px #000);
         img,svg{
             @include SubItem();
+        }
+        @media screen and (max-width: 1000px) {
+            top: 1em;
+            right: 1em;
+            left: auto;
+        }
+    }
+    @media screen and (max-width: 1000px) {
+        .tech{
+            margin-top: per(230, 640);
+            padding: 0;
+        }
+        .assistant{
+            margin-top: per(0, 640);
+            padding: 0;
+        }
+        
+        .poster1{
+            width: 100%;
+            padding-top: per(360, 640);
+            display: block;
+            height: 0;
+            img{
+                @include SubImgW();
+            }
+        }
+        .poster2{
+            margin: per(70,640) auto;
+            position: relative;
+            img{
+                width: 100%;
+            }
+        }
+        .poster3{
+            margin: per(70,640) auto per(30, 640);
+            position: relative;
+            text-align: center;
+            img{
+                width: per(580,640);
+            }
+        }
+        .poster4{
+            margin: per(668,640) auto 0;
+            position: relative;
+            text-align: center;
+            img{
+                width: per(580,640);
+            }
         }
     }
 }
