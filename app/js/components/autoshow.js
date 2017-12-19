@@ -4,7 +4,7 @@
 	no-mixed-spaces-and-tabs, no-multi-spaces, camelcase, no-loop-func,no-empty,
 	key-spacing ,curly, no-shadow, no-return-assign, no-redeclare, no-unused-vars,
 	eqeqeq, no-extend-native, quotes , no-inner-declarations*/
-/*global app, TweenMax*/
+/*global app, TweenMax, YT*/
 app.partial.autoshow = function($, container){
 	container.on('page:update' , function(page, menu){
 		if(!container.hasClass('loaded')){
@@ -17,7 +17,7 @@ app.partial.autoshow = function($, container){
 			clearTimeout(idleTick);
 			$('.menu', container).removeClass('idle');
 			idleTick = setTimeout(function(){
-				$('.menu', container).addClass('idle');;
+				$('.menu', container).addClass('idle');
 			}, 2000);
 		});
 		$('[data-spa]').unbind('click').on('click', function(e){
@@ -41,9 +41,9 @@ app.partial.autoshow = function($, container){
 				height: viewport.height
 			};
 			if(viewport.ratio > ratio){
-				yt.height = viewport.width / ratio
+				yt.height = viewport.width / ratio;
 			}else{
-				yt.width = viewport.height * ratio
+				yt.width = viewport.height * ratio;
 			}
 			TweenMax.set($('.yt', container), {
 				top: '50%',
@@ -211,9 +211,9 @@ app.partial.autoshow = function($, container){
 				players.loop.mute();
 				if(players.loop.played > 98.5){
 					players.loop.pauseVideo();	
-					players.loop.seekTo(0);
-					// clearInterval(wait4loop);
-					players.loop.playVideo();
+					// players.loop.seekTo(0);
+					clearInterval(wait4loop);
+					// players.loop.playVideo();
 				}
 				if(frac >= 0.2 && !$('#player', container).hasClass('in')){
 					players.loop.pauseVideo();	
@@ -228,7 +228,7 @@ app.partial.autoshow = function($, container){
 							$('#autoshow01011').trigger('click');
 							players.loop.pauseVideo();	
 						}
-					}, 200)
+					}, 200);
 				}
 			}, 100);
 		}
