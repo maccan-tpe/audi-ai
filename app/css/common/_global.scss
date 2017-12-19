@@ -57,6 +57,9 @@
         @media screen and (max-width: 1100px) {
             width: 100%;
             min-width: 320px;
+            height: 100%;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
         }
     }
     .center{

@@ -4,7 +4,7 @@
 	no-mixed-spaces-and-tabs, no-multi-spaces, camelcase, no-loop-func,no-empty,
 	key-spacing ,curly, no-shadow, no-return-assign, no-redeclare, no-unused-vars,
 	eqeqeq, no-extend-native, quotes , no-inner-declarations*/
-/*global app, TweenMax*/
+/*global app, TweenMax, YT*/
 app.partial.kv = function($, container){
 	container.on('page:update' , function(page, menu){
 		if(!container.hasClass('loaded')){
@@ -32,9 +32,9 @@ app.partial.kv = function($, container){
 				height: viewport.height
 			};
 			if(viewport.ratio > ratio){
-				yt.height = viewport.width / ratio
+				yt.height = viewport.width / ratio;
 			}else{
-				yt.width = viewport.height * ratio
+				yt.width = viewport.height * ratio;
 			}
 			TweenMax.set($('.yt', container), {
 				top: '50%',
@@ -132,10 +132,7 @@ app.partial.kv = function($, container){
 					setTimeout(function(){
 						$('html').removeClass('loading');
 						$('#player', container).addClass('in');
-						if(location.hash == '#A8L'){
-							$('#autoshow01011').trigger('click');
-						}
-					}, 200)
+					}, 200);
 				}
 				$('.duration .played', container).width(kvplayer.played + '%');
 				// console.log('kvplayer:', kvplayer);
@@ -152,6 +149,10 @@ app.partial.kv = function($, container){
 					kvplayer.playVideo();
 				}
 			}, 250);
+			setTimeout(function(){
+				$('html').removeClass('loading');
+				$('#player', container).addClass('in');
+			}, 8000);
 
 			if($(window).width() <= 768 || $('html.mobile').length || !players.loop.vid){
 				$('html').removeClass('loading');
