@@ -212,9 +212,8 @@ app.partial.autoshow = function($, container){
 				// console.log('players.loop.getVideoLoadedFraction:', players.loop.getVideoLoadedFraction+'',',players.loop.getDuration:', players.loop.getDuration+'',',players.loop.getCurrentTime:', players.loop.getCurrentTime+'');
 				// console.log('players.loop.getVideoLoadedFraction:', players.loop.getVideoLoadedFraction(),',players.loop.getDuration:', players.loop.getDuration(),',players.loop.getCurrentTime:', players.loop.getCurrentTime());
 				players.loop.mute();
-				if(players.loop.played > 98.5){
-					players.loop.pauseVideo();	
-					// players.loop.seekTo(0);
+				if(players.loop.played > 95){
+					$('#player', container).addClass('hide');
 					clearInterval(wait4loop);
 					// players.loop.playVideo();
 				}
