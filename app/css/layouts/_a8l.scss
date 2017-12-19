@@ -9,7 +9,7 @@
     filter: blur(10px) grayscale(100%);
     height: 0;
     transition: 0.5s opacity 0.4s, 0.3s filter 0s;
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 800px) {
         width: 100%;
         height: 100%;
         padding: 0;
@@ -24,7 +24,7 @@
         width: per(940, 1260);
         margin-right: per(240, 1260);
         padding-bottom: 5em;
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 800px) {
             position: relative;
             width: 100%;
             margin: 0;
@@ -107,7 +107,7 @@
         position: relative;
         overflow: hidden;
         background: center/ cover;
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 800px) {
             padding: 0;
             margin-top: per(0,640);
             line-height: 2;
@@ -123,12 +123,12 @@
         position: relative;
         // overflow: hidden;
         background: center/ cover;
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 800px) {
             padding: 0;
             height: aut0;
         }
         figure{
-            @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 800px) {
                 width: 100%!important;
                 position: relative!important;
                 padding: 0!important;
@@ -140,7 +140,7 @@
             &:before, aside{
                 vertical-align: middle;
             }
-            @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 800px) {
                 padding: 0;
                 height: aut0;
                 margin: per(50, 640) auto;
@@ -155,7 +155,7 @@
         position: relative;
         // overflow: hidden;
         background: center/ cover;
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 800px) {
             padding: 0;
             height: aut0;
         }
@@ -170,7 +170,7 @@
             &:before, aside{
                 vertical-align: middle;
             }
-            @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 800px) {
                 padding: 0;
                 height: auto;
                 margin: per(50, 640) auto;
@@ -182,7 +182,7 @@
         @include SubItem();
         white-space: nowrap;
         transition-duration: 0s;
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 800px) {
             position: relative;
             height: auto;
         }
@@ -199,7 +199,10 @@
             display: inline-block;
             white-space: normal;
             padding: em(40,18) em(50, 18);
-            @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 1440px) {
+                padding: em(15,18) em(20, 18);
+            }
+            @media screen and (max-width: 800px) {
                 padding: 0;
                 width: per(540, 640);
                 margin: 0 auto;
@@ -213,7 +216,7 @@
             
             display: inline-block;
             width: auto;
-            @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 800px) {
                 font-size: em(30, 16);
                 font-weight: bold;
                 margin-top: 0;
@@ -221,7 +224,7 @@
         }
         h5{
             font-size: em(24,18);
-            @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 800px) {
                 font-size: em(18, 16);
                 margin-bottom: 1em;
                 line-height: 1.6;
@@ -229,7 +232,7 @@
         }
         P{
             font-size: em(16,18);
-            @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 800px) {
                 font-size: em(12, 16);
                 line-height: 2;
             }
@@ -249,13 +252,13 @@
     }
 
     figure.inter{
-        opacity: 0.75;
+        filter: grayscale(75%);
         transition-duration: 0.3s;
         &:hover{
-            opacity: 1;
+            filter: none;
             box-shadow: 0 0 0 2px #b40404;
             z-index: 3;
-            @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 800px) {
                 box-shadow: none;
             }
         }
@@ -267,13 +270,13 @@
             padding-top: per(340, 940);
             width: per(340, 940);
             background: center/cover;
-            @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 800px) {
                 padding-top: 0;
                 width: 100%;
             }
             &.w{
                 width: per(600, 940);
-                @media screen and (max-width: 1000px) {
+                @media screen and (max-width: 800px) {
                     transform: none;
                     width: 100%;
                 }
@@ -282,7 +285,7 @@
                 width: per(600, 940);
                 z-index: 2;
                 transform: scale(1.02);
-                @media screen and (max-width: 1000px) {
+                @media screen and (max-width: 800px) {
                     transform: none;
                     width: 100%;
                 }
@@ -305,10 +308,12 @@
             bottom: 0;
         }
         &.hidebg-xs{
-            background: none!important;
+            @media screen and (max-width: 800px) {
+                background: none!important;
+            }
         }
-        @media screen and (max-width: 1000px) {
-            opacity: 1;
+        @media screen and (max-width: 800px) {
+            filter: none;
         }
     }
 
@@ -324,13 +329,25 @@
         img,svg{
             @include SubItem();
         }
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 800px) {
             top: 1em;
             right: 1em;
             left: auto;
         }
     }
-    @media screen and (max-width: 1000px) {
+    .scroll{
+        width: em(11, 18);
+        height: em(74, 18);
+        position: fixed;
+        bottom: 100px;
+        margin-left: -250px;
+        left: 50%;
+        cursor: pointer;
+        img,svg{
+            @include SubItem();
+        }
+    }
+    @media screen and (max-width: 800px) {
         .tech{
             margin-top: per(230, 640);
             padding: 0;
@@ -351,6 +368,7 @@
         }
         .poster2{
             margin: per(70,640) auto;
+            padding-top: per(360, 640);
             position: relative;
             img{
                 width: 100%;
@@ -359,6 +377,7 @@
         .poster3{
             margin: per(70,640) auto per(30, 640);
             position: relative;
+            padding-top: per(360, 640);
             text-align: center;
             img{
                 width: per(580,640);
@@ -366,10 +385,24 @@
         }
         .poster4{
             margin: per(668,640) auto 0;
+            padding-top: per(360, 640);
             position: relative;
             text-align: center;
             img{
                 width: per(580,640);
+            }
+        }
+        .poster1,
+        .poster2,
+        .poster3,
+        .poster4{
+            position: relative;
+            >div{
+                @include SubItem();
+            }
+            iframe{
+                opacity: 1;
+                filter: none;
             }
         }
     }

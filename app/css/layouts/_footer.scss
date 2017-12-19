@@ -9,7 +9,7 @@ footer {
     p{
         margin: 0;
     }
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 800px) {
         font-size: em(16,18);
         transform: scale(0.75);
         bottom: em(12,12);

@@ -13,6 +13,13 @@ app.partial.whatsnew = function($, container){
 		}
 	});
 	container.on('page:load' , function(page, menu){
+		//ga
+		if($('html.mobile,html.tablet').length){
+			ga('send', 'pageview', { 'page': 'Mobile_1.0_Whats_New', 'title': 'Mobile_1.0_Whats_New'});
+		}else{
+			ga('send', 'pageview', { 'page': 'PC_1.0_Whats_New', 'title': 'PC_1.0_Whats_New'});
+		}
+		//
 		$('html').removeClass('loading');
 		container.addClass('loaded');
 		$('[data-spa]').unbind('click').on('click', function(e){

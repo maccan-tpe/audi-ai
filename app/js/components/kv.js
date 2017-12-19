@@ -13,6 +13,15 @@ app.partial.kv = function($, container){
 	});
 	container.on('page:load' , function(page, menu){
 		container.addClass('loaded');
+		//ga
+		if($('html.mobile,html.tablet').length){
+			ga('send', 'pageview', { 'page': 'Mobile_0.0_Index', 'title': 'Mobile_0.0_Index'});
+		}else{
+			ga('send', 'pageview', { 'page': 'PC_0.0_Index', 'title': 'PC_0.0_Index'});
+
+		}
+
+		//
 		$('[data-spa]').unbind('click').on('click', function(e){
 			if(!app.spa.supported){
 				return true;

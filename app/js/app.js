@@ -30,6 +30,13 @@ if($ || jQuery){
 
 		$('[role=content] header nav').on('click', function(e){
 			$(this).toggleClass('in');
+			if($(this).hasClass('in') && $('html.mobile,html.tablet').length){
+				
+				//ga
+				ga('send', 'pageview', { 'page': 'Mobile_0.0_nav', 'title': 'Mobile_0.0_nav'});
+
+				//
+			}
 		});
 
 

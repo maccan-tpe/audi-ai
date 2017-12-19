@@ -10,9 +10,9 @@ $link-hover-color: #fff;
 $link-hover-decoration: none;
 $screen-xs-num: 800;
 $screen-xs: #{$screen-xs-num}px;
-$screen-sm-num: 1100;
+$screen-sm-num: 1000;
 $screen-sm: #{$screen-sm-num}px;
-$screen-md-num: 1366;
+$screen-md-num: 1440;
 $screen-md: #{$screen-md-num}px;
 $screen-lg-num: 1920;
 $screen-lg: #{$screen-lg-num}px;
@@ -42,7 +42,7 @@ $font-size-base: 18px;
 $font-size-large: 18px; // ~18px
 $font-size-small: 16px; // ~16px
 $font-size-h1: percentage(36/$font-size-base-num); 
-$font-size-h2: percentage(66/$font-size-base-num); 
+$font-size-h2: percentage(60/$font-size-base-num); 
 $font-size-h3: percentage(60/$font-size-base-num); 
 $font-size-h4: percentage(28/$font-size-base-num); 
 $font-size-h5: percentage(33/$font-size-base-num); 

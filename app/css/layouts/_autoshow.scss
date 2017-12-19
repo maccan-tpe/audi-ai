@@ -32,7 +32,7 @@
                 @include SubItem();
             }
         }
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 800px) {
             &.visible-xs{
                 height:0;
                 padding-top: per(1106, 640);
@@ -53,7 +53,7 @@
         z-index: 2;
         position: absolute;
         width: per(777,1920);
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 800px) {
             top: 0;
             left: 0;
             margin: per(155, 640) 0 0 per(50, 640);
@@ -63,10 +63,16 @@
             width: auto;
             height: auto;
         }
+        @media screen and (max-width: 1000px) {
+            font-size: em(16,18);
+        }
         h2{
             margin: 0 0 1em;
             white-space: nowrap;
             @media screen and (max-width: 1000px) {
+                font-size: em(48,16);
+            }
+            @media screen and (max-width: 800px) {
                 font-size: em(30,16);
             }
         }
@@ -93,7 +99,10 @@
         opacity: inherit;
         backface-visibility: hidden;
         transition: 0.2s opacity 0s, 0s filter 0s;
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 1440px) {
+            font-size: em(14,18);
+        }
+        @media screen and (max-width: 800px) {
             width:per(540, 640);
             margin: 0 auto;
             position: relative;
@@ -103,7 +112,7 @@
         &.idle{
             filter: blur(1px);
             opacity: 0;
-            @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 800px) {
                 filter: none;
                 opacity: inherit;
             }
@@ -178,7 +187,7 @@
     .summary{
         @include Item(1920, 300, 'auto', 90, 90, 'auto', 1920, 'fit','absolute');
         
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 800px) {
             margin: 0 auto;
             padding-top: 0;
             position: relative;
@@ -210,7 +219,7 @@
                 white-space: nowrap;
                 text-shadow: 0 0 1px currentColor;
             }
-            @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 800px) {
                 font-size: em(12,16);
                 position: relative;
                 padding-top: per(0, 640);
@@ -259,7 +268,7 @@
             opacity: 0.6;
             position: relative;
             transition-duration: 0.2s; 
-            @media screen and (max-width: 1000px) {
+            @media screen and (max-width: 800px) {
                 display: none;
             }
             &:hover{
@@ -342,7 +351,7 @@
         overflow: auto;
         transition: 0.4s opacity 0.4s, 0s filter 0s ;
         z-index: 2;
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 800px) {
             width: 100%;
             height: 100%;
             padding: 0;
@@ -377,7 +386,7 @@
         z-index: 1;
     }
 
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 800px) {
         #autoshow01:checked ~ .viewport [data-id=autoshow0101],
         #autoshow02:checked ~ .viewport [data-id=autoshow0201],
         #autoshow02:checked ~ .viewport [data-id=autoshow0202],
