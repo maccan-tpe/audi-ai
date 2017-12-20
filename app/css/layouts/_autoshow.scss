@@ -217,7 +217,11 @@
             h4{
                 font-size: em(48,24);
                 white-space: nowrap;
+                color: #bb0a30;
                 text-shadow: 0 0 1px currentColor;
+            }
+            p{
+                color: #bb0a30;
             }
             @media screen and (max-width: 800px) {
                 font-size: em(12,16);
