@@ -244,7 +244,7 @@ app.partial.autoshow = function($, container){
 		$('[name=autoshowDetail]').on('click', function(){
 			if(this.id === 'autoshow0101'){
 				// players.loop.playVideo();
-			}else{
+			}else if(players.loop.pauseVideo){
 				players.loop.pauseVideo();
 			}
 		});
