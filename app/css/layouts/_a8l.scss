@@ -18,6 +18,7 @@
         padding: 0;
         left: 0;
         margin: 0;
+        font-size: vwxs(24,640);
         -webkit-overflow-scrolling: touch;
     }
 
@@ -138,7 +139,7 @@
         background: center/ cover;
         @media screen and (max-width: 800px) {
             padding: 0;
-            height: aut0;
+            height: auto;
         }
         figure{
             @media screen and (max-width: 800px) {
@@ -156,7 +157,8 @@
             @media screen and (max-width: 800px) {
                 padding: 0;
                 height: aut0;
-                margin: per(50, 640) auto;
+                padding-top: per(20, 640);
+                margin: per(80, 640) auto;
                 width: per(540, 640);
             }
         }
@@ -358,6 +360,7 @@
             top: 1em;
             right: 1em;
             left: auto;
+            margin-right: 0;
         }
     }
     .scroll{
@@ -372,6 +375,21 @@
             @include SubItem();
         }
     }
+	.logo{
+		@media screen and (max-width: 800px) {
+            top: 0;
+            left: 0;
+			width: per(90, 640);
+			padding-top: per(30, 640);
+			margin-top: per(30, 640);
+			margin-left: per(30, 640);
+			position: fixed;
+		}
+		img, svg{
+			@include SubImgW();
+			.logo{clip-path:url(#logo2); fill: #fff}
+		}
+	}
     @media screen and (max-width: 800px) {
         .tech{
             margin-top: per(230, 640);
@@ -397,7 +415,7 @@
             // }
         }
         .poster3{
-            margin: per(70,640) auto per(30, 640);
+            margin: per(70,640) auto 0;
             width: per(580,640);
             position: relative;
             padding-top: per(360, 640);
@@ -406,7 +424,7 @@
             // }
         }
         .poster4{
-            margin: per(668,640) auto 0;
+            margin: per(648,640) auto 0;
             width: per(580,640);
             padding-top: per(360, 640);
             position: relative;

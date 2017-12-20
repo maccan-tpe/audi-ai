@@ -21,7 +21,7 @@ app.partial.a8l = function($, container){
 		}
 		//
         var iframe = '<div><iframe frameborder="0" allowfullscreen="1" gesture="media" allow="encrypted-media" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/{{vid}}?autoplay=1&amp;playlist={{vid}}&amp;rel=0&amp;controls=0&amp;showinfo=0&amp;modestbranding=1&amp;iv_load_policy=3&amp;enablejsapi=1&amp;version=3&amp;widgetid=1&amp;playsinline=1&amp;loop=1"></iframe></div>';
-        $('html.mobile a[data-vid]').each(function(){
+        $('a[data-vid]', container).on('click', function(){
             var vid = $(this).data('vid');
             $(this).html(iframe.replace(/{{vid}}/ig, vid));
             

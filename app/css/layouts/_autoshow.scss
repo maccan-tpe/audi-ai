@@ -44,6 +44,20 @@
                 }
             }
         }
+
+        figure.scroll{
+            width: em(11, 18);
+            height: em(74, 18);
+            position: fixed;
+            bottom: 100px;
+            top: auto;
+            margin-left: em(5.5, 18);
+            left: 50%;
+            cursor: pointer;
+            img,svg{
+                @include SubItem();
+            }
+        }
     }
     .title{
         top: 50%;
@@ -233,7 +247,7 @@
                 h4{
                     font-size: em(24,12);
                 }
-                >a{
+                >a, >label{
                     @include SubItem();
                     padding: 1em;
                 }
