@@ -4,7 +4,7 @@
 	no-mixed-spaces-and-tabs, no-multi-spaces, camelcase, no-loop-func,no-empty,
 	key-spacing ,curly, no-shadow, no-return-assign, no-redeclare, no-unused-vars,
 	eqeqeq, no-extend-native, quotes , no-inner-declarations*/
-/*global app, TweenMax*/
+/*global app, TweenMax, ga*/
 app.partial.whatsnew = function($, container){
 	container.on('page:update' , function(page, menu){
 		$('html').removeClass('loading');
