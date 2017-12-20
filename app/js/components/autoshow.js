@@ -212,8 +212,9 @@ app.partial.autoshow = function($, container){
 				// console.log('loop.getVideoLoadedFraction:', loop.getVideoLoadedFraction+'',',loop.getDuration:', loop.getDuration+'',',loop.getCurrentTime:', loop.getCurrentTime+'');
 				// console.log('loop.getVideoLoadedFraction:', loop.getVideoLoadedFraction(),',loop.getDuration:', loop.getDuration(),',loop.getCurrentTime:', loop.getCurrentTime());
 				loop.mute();
-				if(loop.played > 95){
-					$('#player', container).addClass('hide');
+				if(loop.played > 98){
+					loop.pauseVideo();
+					// $('#player', container).addClass('hide');
 					clearInterval(wait4loop);
 					// loop.playVideo();
 				}
@@ -255,7 +256,7 @@ app.partial.autoshow = function($, container){
 				console.log('done retry');
 				clearInterval(apiTick);
 			}
-		}, 5000);
+		}, 1000);
 
 		$('[name=autoshowDetail]').on('click', function(){
 			if(this.id === 'autoshow0101'){
