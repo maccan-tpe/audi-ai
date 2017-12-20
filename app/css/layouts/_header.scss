@@ -96,6 +96,7 @@ header {
 			padding-top: per(30, 640);
 			margin-top: em(15, 16);
 			margin-left: em(15, 16);
+			position: fixed;
 		}
 		img, svg{
 			@include SubImgW();

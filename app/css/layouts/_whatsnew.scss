@@ -31,6 +31,10 @@
         }
     }
     .background{
+        @media screen and (max-width: 800px) {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
         #a8640{
             background: center top/cover;
         }

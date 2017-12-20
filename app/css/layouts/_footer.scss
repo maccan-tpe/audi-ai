@@ -17,4 +17,8 @@ footer {
             margin: 0 auto;
         }
     }
+    @media screen and (max-width: $screen-xs) {
+        max-width: 100%;
+        position: relative!important;
+    }
 }
