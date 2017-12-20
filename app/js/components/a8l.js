@@ -24,6 +24,11 @@ app.partial.a8l = function($, container){
             var vid = $(this).data('vid');
             $(this).html(iframe.replace(/{{vid}}/ig, vid));
             
-        });
+		});
+		
+		$('.scroll', container).on('click', function(){
+			console.log('scroll');
+			TweenMax.to('[role=a8l] .wrap',0.2, {scrollTop: '+=10px'});
+		});
 	});
 };

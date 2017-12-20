@@ -12,6 +12,7 @@ app.partial.autoshow = function($, container){
 		}
 	});
 	container.on('page:load' , function(page, menu){
+		container.addClass('loaded');
 		if(location.hash == '#A8L'){
 			$('#autoshow01011').trigger('click');
 		}
@@ -31,7 +32,6 @@ app.partial.autoshow = function($, container){
 				return false;
 			}
 		});
-		container.addClass('loaded');
 		$('html').addClass('loading');
 		$(window).on('resize', function(){
 			var viewport = {
@@ -136,8 +136,8 @@ app.partial.autoshow = function($, container){
 
 		function playerReady(v){
 			// console.log(v.player);
-			// console.log(v);
-			v.player.pauseVideo();
+			// console.log(v.player.pauseVideo);
+			// v.player.pauseVideo();
 			$('#' + v.elementId).parent().unbind('click').on('click', function(){
 				var playing = $('#' + v.elementId).parent().attr('data-playing');
 				// console.log(playing);
@@ -194,7 +194,7 @@ app.partial.autoshow = function($, container){
 
 			});
 
-			players.loop = players.loop.player;
+			loop = players.loop.player;
 			var wait4loop = setInterval(function(){
 				if(!players.loop || !players.loop.getVideoLoadedFraction){
 					return;
@@ -202,33 +202,33 @@ app.partial.autoshow = function($, container){
 				if($(window).width() <= 768 || $('html.mobile').length){
 					clearInterval(wait4loop);
 				}
-				var frac = players.loop.getVideoLoadedFraction();
-				players.loop.frac = players.loop.getVideoLoadedFraction();
-				players.loop.totalTime = players.loop.getDuration();
-				players.loop.currentTime = players.loop.getCurrentTime();
-				players.loop.played = players.loop.currentTime/players.loop.totalTime * 100;
-				// console.log('players.loop:', players.loop);
-				// console.log('frac:', players.loop.frac*100+'%',',totalTime:', players.loop.totalTime+'s',',currentTime:', players.loop.currentTime+'s',',played:', players.loop.played+'%');
-				// console.log('players.loop.getVideoLoadedFraction:', players.loop.getVideoLoadedFraction+'',',players.loop.getDuration:', players.loop.getDuration+'',',players.loop.getCurrentTime:', players.loop.getCurrentTime+'');
-				// console.log('players.loop.getVideoLoadedFraction:', players.loop.getVideoLoadedFraction(),',players.loop.getDuration:', players.loop.getDuration(),',players.loop.getCurrentTime:', players.loop.getCurrentTime());
-				players.loop.mute();
-				if(players.loop.played > 95){
+				var frac = loop.getVideoLoadedFraction();
+				loop.frac = loop.getVideoLoadedFraction();
+				loop.totalTime = loop.getDuration();
+				loop.currentTime = loop.getCurrentTime();
+				loop.played = loop.currentTime/loop.totalTime * 100;
+				// console.log('loop:', loop);
+				// console.log('frac:', loop.frac*100+'%',',totalTime:', loop.totalTime+'s',',currentTime:', loop.currentTime+'s',',played:', loop.played+'%');
+				// console.log('loop.getVideoLoadedFraction:', loop.getVideoLoadedFraction+'',',loop.getDuration:', loop.getDuration+'',',loop.getCurrentTime:', loop.getCurrentTime+'');
+				// console.log('loop.getVideoLoadedFraction:', loop.getVideoLoadedFraction(),',loop.getDuration:', loop.getDuration(),',loop.getCurrentTime:', loop.getCurrentTime());
+				loop.mute();
+				if(loop.played > 95){
 					$('#player', container).addClass('hide');
 					clearInterval(wait4loop);
-					// players.loop.playVideo();
+					// loop.playVideo();
 				}
 				if(frac >= 0.2 && !$('#player', container).hasClass('in')){
-					players.loop.pauseVideo();	
-					players.loop.seekTo(0);
+					loop.pauseVideo();	
+					loop.seekTo(0);
 					// clearInterval(wait4loop);
-					players.loop.playVideo();
+					loop.playVideo();
 					setTimeout(function(){
 						$('html').removeClass('loading');
 						$('#player', container).addClass('in');
 						// console.log(location.hash == '#A8L');
 						if(location.hash == '#A8L'){
 							$('#autoshow01011').trigger('click');
-							players.loop.pauseVideo();	
+							loop.pauseVideo();	
 						}
 					}, 200);
 				}
@@ -236,10 +236,25 @@ app.partial.autoshow = function($, container){
 		}
 
 		window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-
-		try{
-			onYouTubeIframeAPIReady();
-		}catch(e){}
+		var apiTick = 0;
+		var retry = 0;
+		
+		apiTick = setInterval(function(){
+			if(onYouTubeIframeAPIReady && !YT.Player){
+				console.log('retry:', retry, players.loop.playVideo);
+				var api = $('script[src*=youtube]');
+				var newApi = api.clone().attr('src', 'https://www.youtube.com/iframe_api?retry=' + retry);
+				newApi.insertAfter(api);
+				api.remove();
+				retry++;
+			}else{
+				// try{
+					onYouTubeIframeAPIReady();
+				// }catch(e){}
+				console.log('done retry');
+				clearInterval(apiTick);
+			}
+		}, 2000);
 
 		$('[name=autoshowDetail]').on('click', function(){
 			if(this.id === 'autoshow0101'){
