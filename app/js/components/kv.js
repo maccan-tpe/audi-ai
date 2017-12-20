@@ -151,7 +151,7 @@ app.partial.kv = function($, container){
 				if(kvplayer.frac!=null && kvplayer.frac < 1){
 					$('.duration .downloaded', container).width(kvplayer.frac*100 + '%');
 				}
-				if(kvplayer.played > 98.5){
+				if(kvplayer.played > 95){
 					kvplayer.pauseVideo();	
 					kvplayer.seekTo(0);
 					// clearInterval(wait4loop);
