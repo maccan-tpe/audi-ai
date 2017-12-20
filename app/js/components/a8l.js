@@ -12,6 +12,7 @@ app.partial.a8l = function($, container){
 		}
 	});
 	container.on('page:load' , function(page, menu){
+		$('header nav [data-container=a8l]').addClass('active').siblings().removeClass('active');
 		//ga
 		if($('html.mobile,html.tablet').length){
 			ga('send', 'pageview', { 'page': 'Mobile_1.1.1.1_A8_Technology', 'title': 'Mobile_1.1.1.1_A8_Technology'});

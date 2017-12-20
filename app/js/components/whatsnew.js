@@ -13,6 +13,7 @@ app.partial.whatsnew = function($, container){
 		}
 	});
 	container.on('page:load' , function(page, menu){
+		$('header nav [data-container=whatsnew]').addClass('active').siblings().removeClass('active');
 		//ga
 		if($('html.mobile,html.tablet').length){
 			ga('send', 'pageview', { 'page': 'Mobile_1.0_Whats_New', 'title': 'Mobile_1.0_Whats_New'});

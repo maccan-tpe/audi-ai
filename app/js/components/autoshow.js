@@ -12,6 +12,7 @@ app.partial.autoshow = function($, container){
 		}
 	});
 	container.on('page:load1' , function(page, menu){
+		$('header nav [data-container=autoshow]').addClass('active').siblings().removeClass('active');
 		container.addClass('loaded');
 		if(location.hash == '#A8L'){
 			$('#autoshow01011').trigger('click');
@@ -241,26 +242,30 @@ app.partial.autoshow = function($, container){
 		}
 
 		window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
-		var apiTick = 0;
-		var retry = 0;
-		console.log('start retry');
-		apiTick = setInterval(function(){
-			if(onYouTubeIframeAPIReady && !players.loop.player){
-				console.log('retry:', retry, players.loop.player);
-				var api = $('script[src*=youtube]');
-				var newApi = api.clone().attr('src', 'https://www.youtube.com/iframe_api?retry=' + retry);
-				newApi.insertAfter(api);
-				api.remove();
-				retry++;
-				onYouTubeIframeAPIReady();
-			}else{
-				// try{
-					// onYouTubeIframeAPIReady();
-				// }catch(e){}
-				console.log('done retry');
-				clearInterval(apiTick);
-			}
-		}, 1000);
+		if(!$('html.mobile, html.tablet').length){
+			var apiTick = 0;
+			var retry = 0;
+			console.log('start retry');
+			apiTick = setInterval(function(){
+				if(onYouTubeIframeAPIReady && !players.loop.player){
+					console.log('retry:', retry, players.loop.player);
+					var api = $('script[src*=youtube]');
+					var newApi = api.clone().attr('src', 'https://www.youtube.com/iframe_api?retry=' + retry);
+					newApi.insertAfter(api);
+					api.remove();
+					retry++;
+					onYouTubeIframeAPIReady();
+				}else{
+					// try{
+						// onYouTubeIframeAPIReady();
+					// }catch(e){}
+					console.log('done retry');
+					clearInterval(apiTick);
+				}
+			}, 1000);
+		}else{
+			$('html').removeClass('loading');
+		}
 
 		$('[name=autoshowDetail]').on('click', function(){
 			if(this.id === 'autoshow0101' && players.loop.player.playVideo){
