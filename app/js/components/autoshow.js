@@ -212,8 +212,12 @@ app.partial.autoshow = function($, container){
 				// console.log('loop.getVideoLoadedFraction:', loop.getVideoLoadedFraction+'',',loop.getDuration:', loop.getDuration+'',',loop.getCurrentTime:', loop.getCurrentTime+'');
 				// console.log('loop.getVideoLoadedFraction:', loop.getVideoLoadedFraction(),',loop.getDuration:', loop.getDuration(),',loop.getCurrentTime:', loop.getCurrentTime());
 				loop.mute();
-				if(loop.played > 98){
+				if(loop.played > 95){
 					loop.pauseVideo();
+					loop.seekTo(4);
+					loop.playVideo();
+					loop.pauseVideo();
+
 					// $('#player', container).addClass('hide');
 					clearInterval(wait4loop);
 					// loop.playVideo();
