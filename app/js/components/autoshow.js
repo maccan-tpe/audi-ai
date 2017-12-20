@@ -96,7 +96,7 @@ app.partial.autoshow = function($, container){
 				stateChange: function (e) {
 					console.log(e.data);
 					if (e.data !== YT.PlayerState.PLAYING) {
-						$('#player1').parent().data('data-playing', 0);
+						$('#player1').parents('.youtube').data('data-playing', 0);
 					}
 				}
 			},
@@ -111,14 +111,14 @@ app.partial.autoshow = function($, container){
 				stateChange: function (e) {
 					console.log(e.data);
 					if (e.data !== YT.PlayerState.PLAYING) {
-						$('#player2').parent().attr('data-playing', 0);
+						$('#player2').parents('.youtube').attr('data-playing', 0);
 					}
 				}
 			},
 			look: {
 				height: 530,
 				width: 940,
-				vid: 'meIoN4eEi_Y',
+				vid:  $('#player3').data('vid'),
 				elementId: 'player3',
 				ready: function(){
 					playerReady(players.look);
@@ -127,7 +127,7 @@ app.partial.autoshow = function($, container){
 			inside: {
 				height: 530,
 				width: 940,
-				vid: 'dMfFL0kSytU',
+				vid: $('#player4').data('vid'),
 				elementId: 'player4',
 				ready: function(){
 					playerReady(players.inside);
@@ -139,14 +139,14 @@ app.partial.autoshow = function($, container){
 			// console.log(v.player);
 			// console.log(v.player.pauseVideo);
 			// v.player.pauseVideo();
-			$('#' + v.elementId).parent().unbind('click').on('click', function(){
-				var playing = $('#' + v.elementId).parent().attr('data-playing');
+			$('#' + v.elementId).parents('.youtube').unbind('click').on('click', function(){
+				var playing = $('#' + v.elementId).parents('.youtube').attr('data-playing');
 				// console.log(playing);
 				if(playing != 1){
-					$('#' + v.elementId).parent().attr('data-playing', 1);
+					$('#' + v.elementId).parents('.youtube').attr('data-playing', 1);
 					v.player.playVideo();
 				}else{
-					$('#' + v.elementId).parent().attr('data-playing', 0);
+					$('#' + v.elementId).parents('.youtube').attr('data-playing', 0);
 					v.player.pauseVideo();
 				}
 			});
