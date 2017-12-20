@@ -57,7 +57,7 @@ app.partial.autoshow = function($, container){
 				marginLeft: yt.width* -0.5,
 				marginTop: yt.height* -0.5
 			});
-		});
+		}).trigger('resize');
 		// $('header nav a:eq(1)').on('click', function(e){
 		// 	$('#autoshow0101').trigger('click');
 		// 	e.stopPropagation();
