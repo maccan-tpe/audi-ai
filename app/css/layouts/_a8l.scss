@@ -362,41 +362,42 @@
             padding-top: per(360, 640);
             display: block;
             height: 0;
-            img{
-                @include SubImgW();
-            }
         }
         .poster2{
             margin: per(70,640) auto;
             padding-top: per(360, 640);
             position: relative;
-            img{
-                width: 100%;
-            }
+            // img{
+            //     width: 100%;
+            // }
         }
         .poster3{
             margin: per(70,640) auto per(30, 640);
+            width: per(580,640);
             position: relative;
             padding-top: per(360, 640);
             text-align: center;
-            img{
-                width: per(580,640);
-            }
+            // img{
+            // }
         }
         .poster4{
             margin: per(668,640) auto 0;
+            width: per(580,640);
             padding-top: per(360, 640);
             position: relative;
             text-align: center;
-            img{
-                width: per(580,640);
-            }
+            // img{
+            //     width: per(580,640);
+            // }
         }
         .poster1,
         .poster2,
         .poster3,
         .poster4{
             position: relative;
+            img{
+                @include SubImgW();
+            }
             >div{
                 @include SubItem();
             }
