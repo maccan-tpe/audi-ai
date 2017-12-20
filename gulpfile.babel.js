@@ -95,7 +95,7 @@ gulp.task('img', () => {
         .pipe(gulp.dest('dist/img'));
 });
 
-gulp.task('fonts', () => {
+gulp.task('fonts', ['pdf'], () => {
     return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function(err) {})
             .concat('app/fonts/**/*'))
         .pipe(gulp.dest('.tmp/fonts'))
