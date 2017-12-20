@@ -335,8 +335,8 @@
         height: em(30, 18);
         position: fixed;
         top: 100px;
-        margin-left: -250px;
-        left: 50%;
+        margin-right: per(1200, 1920);
+        right: 0;
         cursor: pointer;
         filter: drop-shadow(0 0 1px #000);
         img,svg{
