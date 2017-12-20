@@ -219,7 +219,7 @@ app.partial.autoshow = function($, container){
 					loop.pauseVideo();
 
 					// $('#player', container).addClass('hide');
-					clearInterval(wait4loop);
+					// clearInterval(wait4loop);
 					// loop.playVideo();
 				}
 				if(frac >= 0.2 && !$('#player', container).hasClass('in')){
@@ -263,10 +263,11 @@ app.partial.autoshow = function($, container){
 		}, 1000);
 
 		$('[name=autoshowDetail]').on('click', function(){
-			if(this.id === 'autoshow0101'){
-				// players.loop.playVideo();
-			}else if(players.loop.pauseVideo){
-				players.loop.pauseVideo();
+			if(this.id === 'autoshow0101' && players.loop.player.playVideo){
+				players.loop.player.seekTo(0);
+				players.loop.player.playVideo();
+			}else if(players.loop.player.pauseVideo){
+				players.loop.player.pauseVideo();
 			}
 		});
 

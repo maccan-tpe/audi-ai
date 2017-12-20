@@ -102,6 +102,12 @@ gulp.task('fonts', () => {
         .pipe(gulp.dest('dist/fonts'));
 });
 
+gulp.task('pdf', () => {
+    return gulp.src('app/media/**/*')
+        .pipe(gulp.dest('.tmp/media'))
+        .pipe(gulp.dest('dist/media'));
+});
+
 gulp.task('extras', () => {
     return gulp.src([
         'app/*.*',
