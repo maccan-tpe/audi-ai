@@ -8,10 +8,10 @@
 app.partial.autoshow = function($, container){
 	container.on('page:update' , function(page, menu){
 		if(!container.hasClass('loaded')){
-			container.trigger('page:load');
+			container.trigger('page:load1');
 		}
 	});
-	container.on('page:load' , function(page, menu){
+	container.on('page:load1' , function(page, menu){
 		container.addClass('loaded');
 		if(location.hash == '#A8L'){
 			$('#autoshow01011').trigger('click');
@@ -196,7 +196,7 @@ app.partial.autoshow = function($, container){
 
 			loop = players.loop.player;
 			var wait4loop = setInterval(function(){
-				if(!players.loop || !players.loop.getVideoLoadedFraction){
+				if(!loop || !loop.getVideoLoadedFraction){
 					return;
 				}
 				if($(window).width() <= 768 || $('html.mobile').length){
@@ -208,7 +208,7 @@ app.partial.autoshow = function($, container){
 				loop.currentTime = loop.getCurrentTime();
 				loop.played = loop.currentTime/loop.totalTime * 100;
 				// console.log('loop:', loop);
-				// console.log('frac:', loop.frac*100+'%',',totalTime:', loop.totalTime+'s',',currentTime:', loop.currentTime+'s',',played:', loop.played+'%');
+				console.log('frac:', loop.frac*100+'%',',totalTime:', loop.totalTime+'s',',currentTime:', loop.currentTime+'s',',played:', loop.played+'%');
 				// console.log('loop.getVideoLoadedFraction:', loop.getVideoLoadedFraction+'',',loop.getDuration:', loop.getDuration+'',',loop.getCurrentTime:', loop.getCurrentTime+'');
 				// console.log('loop.getVideoLoadedFraction:', loop.getVideoLoadedFraction(),',loop.getDuration:', loop.getDuration(),',loop.getCurrentTime:', loop.getCurrentTime());
 				loop.mute();
@@ -238,23 +238,24 @@ app.partial.autoshow = function($, container){
 		window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 		var apiTick = 0;
 		var retry = 0;
-		
+		console.log('start retry');
 		apiTick = setInterval(function(){
-			if(onYouTubeIframeAPIReady && !YT.Player){
-				console.log('retry:', retry, players.loop.playVideo);
+			if(onYouTubeIframeAPIReady && !players.loop.player){
+				console.log('retry:', retry, players.loop.player);
 				var api = $('script[src*=youtube]');
 				var newApi = api.clone().attr('src', 'https://www.youtube.com/iframe_api?retry=' + retry);
 				newApi.insertAfter(api);
 				api.remove();
 				retry++;
+				onYouTubeIframeAPIReady();
 			}else{
 				// try{
-					onYouTubeIframeAPIReady();
+					// onYouTubeIframeAPIReady();
 				// }catch(e){}
 				console.log('done retry');
 				clearInterval(apiTick);
 			}
-		}, 2000);
+		}, 5000);
 
 		$('[name=autoshowDetail]').on('click', function(){
 			if(this.id === 'autoshow0101'){
