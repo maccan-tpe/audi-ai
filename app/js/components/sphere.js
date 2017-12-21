@@ -60,7 +60,7 @@ app.partial.sphere = function($, container){
         fnACos = Math.acos;
         fnSin = Math.sin;
         // Sphere Settings
-        iRadiusSphere = 150;
+        iRadiusSphere = 300;
         iProjSphereX = 0;
         iProjSphereY = 0;
         // Particle Settings
@@ -73,9 +73,9 @@ app.partial.sphere = function($, container){
         fAngle = 0.0;
         fSinAngle = 0.0;
         fCosAngle = 0.0;
-        window.iFramesToRotate = 1500.0;
-        window.iPerspective = 180;
-        window.iNewParticlePerFrame = 1;
+        window.iFramesToRotate = 2000.0;
+        window.iPerspective = 600;
+        window.iNewParticlePerFrame = 2;
         window.fGrowDuration = 120.0;
         window.fWaitDuration = 2000.0;
         window.fShrinkDuration = 40.0;
@@ -108,24 +108,24 @@ app.partial.sphere = function($, container){
         fnSwapList = function(p, oSrc, oDst) {
             if (p != null) {
             // remove p from oSrc
-            if (oSrc.pFirst === p) {
-                oSrc.pFirst = p.pNext;
-                if (p.pNext != null) {
-                p.pNext.pPrev = null;
+                if (oSrc.pFirst === p) {
+                    oSrc.pFirst = p.pNext;
+                    if (p.pNext != null) {
+                    p.pNext.pPrev = null;
+                    }
+                } else {
+                    p.pPrev.pNext = p.pNext;
+                    if (p.pNext != null) {
+                    p.pNext.pPrev = p.pPrev;
+                    }
                 }
-            } else {
-                p.pPrev.pNext = p.pNext;
-                if (p.pNext != null) {
-                p.pNext.pPrev = p.pPrev;
-                }
-            }
-            } else {
-            // create new p
-            p = new Particle();
+                } else {
+                // create new p
+                p = new Particle();
             }
             p.pNext = oDst.pFirst;
             if (oDst.pFirst != null) {
-            oDst.pFirst.pPrev = p;
+                oDst.pFirst.pPrev = p;
             }
             oDst.pFirst = p;
             p.pPrev = null;
@@ -171,16 +171,16 @@ app.partial.sphere = function($, container){
                     this.fProjY = this.fY * this.fRadiusCurrent + iProjSphereY;
                     this.iFramesAlive += 1;
                     if (this.iFramesAlive < this.fGrowDuration) {
-                    this.fAlpha = this.iFramesAlive * 1.0 / this.fGrowDuration;
+                        this.fAlpha = this.iFramesAlive * 1.0 / this.fGrowDuration;
                     } else if (this.iFramesAlive < this.fGrowDuration + this.fWaitDuration) {
-                    this.fAlpha = 1.0;
+                        this.fAlpha = 1.0;
                     } else if (this.iFramesAlive < this.fGrowDuration + this.fWaitDuration + this.fShrinkDuration) {
-                    this.fAlpha = (this.fGrowDuration + this.fWaitDuration + this.fShrinkDuration - this.iFramesAlive) * 1.0 / this.fShrinkDuration;
+                        this.fAlpha = (this.fGrowDuration + this.fWaitDuration + this.fShrinkDuration - this.iFramesAlive) * 1.0 / this.fShrinkDuration;
                     } else {
-                    this.bIsDead = true;
+                        this.bIsDead = true;
                     }
                     if (this.bIsDead === true) {
-                    fnSwapList(this, oRender, oBuffer);
+                        fnSwapList(this, oRender, oBuffer);
                     }
                     this.fAlpha *= fnMin(1.0, fnMax(0.5, this.fRotZ / iRadiusSphere));
                     this.fAlpha = fnMin(1.0, fnMax(0.0, this.fAlpha));
