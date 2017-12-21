@@ -68,7 +68,7 @@ if($ || jQuery){
 				});
 				app.spa.demand = demand;
 				translate();
-				console.log(app.spa)
+				// console.log(app.spa);
 			});
 		}
 

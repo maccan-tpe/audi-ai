@@ -11,7 +11,16 @@ app.partial.kv = function($, container){
 			container.trigger('page:load');
 		}
 	});
-	container.on('page:load' , function(page, menu){
+	container.on('mousewheel', function(e){
+		// console.log(e.originalEvent.deltaY);
+		if(e.originalEvent.deltaY>0 ){
+			$('.kv-btn').trigger('click');
+			e.stopPropagation();
+			e.preventDefault();
+			return false;
+		}
+	});
+	container.one('page:load' , function(page, menu){
 		container.addClass('loaded');
 		//ga
 		if($('html.mobile,html.tablet').length){
@@ -23,6 +32,8 @@ app.partial.kv = function($, container){
 
 		//
 		$('[data-spa]').unbind('click').on('click', function(e){
+			window.onYouTubeIframeAPIReady = function(){};
+			clearInterval(container.data('wait4loop')*1);
 			if(!app.spa.supported){
 				return true;
 			}else{
@@ -158,6 +169,9 @@ app.partial.kv = function($, container){
 					kvplayer.playVideo();
 				}
 			}, 250);
+
+			container.data('wait4loop', wait4loop);
+
 			setTimeout(function(){
 				$('html').removeClass('loading');
 				$('#player', container).addClass('in');
@@ -189,5 +203,4 @@ app.partial.kv = function($, container){
 		}catch(e){}
 	});
 	// $('html').removeClass('loading');
-	
 };

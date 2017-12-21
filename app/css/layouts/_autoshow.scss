@@ -307,6 +307,10 @@
         }
     }
 
+    .viewport{
+        z-index: 2;
+    }
+
 
 
     #autoshow01:checked ~ .viewport label[for=autoshow01] span,
@@ -378,7 +382,7 @@
         &:after{
             @include SubItem();
             content: '';
-            background: rgba(0,0,0,0.6);
+            // background: rgba(0,0,0,0.6);
         }
     }
     #autoshow01011:checked ~ [role=a8l]{

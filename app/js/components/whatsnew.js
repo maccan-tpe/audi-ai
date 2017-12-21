@@ -22,7 +22,7 @@ app.partial.whatsnew = function($, container){
 		}
 		//
 		$('html').removeClass('loading');
-		container.addClass('loaded');
+		// container.addClass('loaded');
 		$('[data-spa]').unbind('click').on('click', function(e){
 			if(!app.spa.supported){
 				return true;
@@ -31,5 +31,14 @@ app.partial.whatsnew = function($, container){
 				return false;
 			}
 		});
+	});
+	container.on('mousewheel', function(e){
+		console.log(e.originalEvent.deltaY);
+		if(e.originalEvent.deltaY>0 ){
+			$('.btn-autoshow').trigger('click');
+			e.stopPropagation();
+			e.preventDefault();
+			return false;
+		}
 	});
 };
