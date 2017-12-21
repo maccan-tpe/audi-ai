@@ -264,7 +264,6 @@ app.partial.autoshow = function($, container){
 		// });
 
 		$('.viewport', container).on('mousewheel', function(e){
-			console.log(e.originalEvent.deltaY);
 			if(e.originalEvent.deltaY>0 && $('#autoshow0101:checked').length && $('html.desktop').length){
 				$('#autoshow01011').trigger('click');
 				e.stopPropagation();
@@ -276,6 +275,9 @@ app.partial.autoshow = function($, container){
 				e.stopPropagation();
 				e.preventDefault();
 				return false;
+			}
+			if(e.originalEvent.deltaY<0){
+				$('.spa-prev', container).trigger('click');
 			}
 		});
 		$('.back', container).on('click', function(){
