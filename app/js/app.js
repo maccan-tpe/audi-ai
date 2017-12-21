@@ -17,6 +17,7 @@ if($ || jQuery){
 		// 定義每個元件
 		$.each(app.partial, function(name, init){
 			var cont = $('[role='+name+']');
+			console.log(cont);
 			init($, cont);
 			cont.trigger('page:update');
 		});
@@ -46,17 +47,23 @@ if($ || jQuery){
 		app.spa = {
 			supported: typeof history.pushState === 'function',
 			container: $('.main-content'),
-			next: null
+			next: null,
+			hold: false
 		};
 
 
 		function loadPage(href){
+			if(app.spa.hold){
+				return;
+			}
+			app.spa.hold = true;
 			var temp = document.createElement('div');
 			var demand = {
 				title: null,
 				url: href
 			};
 			app.spa.to = href;
+			console.log(href);
 			$.get(href, function(r){
 				$(r).each(function(i, element){
 					if($(element).attr('property') === 'og:title'){
@@ -82,13 +89,13 @@ if($ || jQuery){
 			app.spa.next.insertAfter(app.spa.container);
 			app.imageReload.refresh();
 
-			app.spa.container.one('transitionend', function(){
-				$('.translateRight').remove();
-			});
 			app.spa.next.one('transitionend', function(){
+				$('.translateRight').remove();
 				app.spa.container = app.spa.next;
 				app.spa.next = null;
 				pushState(app.spa.demand, app.spa.url);
+				$('html').removeClass('loading');
+				app.spa.hold = false;	
 			});
 			app.spa.container.addClass('translateRight');
 			app.spa.next.removeClass('translateLeft');
@@ -98,7 +105,7 @@ if($ || jQuery){
 				init($, cont);
 				cont.trigger('page:update');
 			});
-
+		
 			
 		}
 		function pushState(info){

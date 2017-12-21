@@ -196,7 +196,7 @@ app.partial.autoshow = function($, container){
 				loop.currentTime = loop.getCurrentTime();
 				loop.played = loop.currentTime/loop.totalTime * 100;
 				// console.log('loop:', loop);
-				console.log('frac:', loop.frac*100+'%',',totalTime:', loop.totalTime+'s',',currentTime:', loop.currentTime+'s',',played:', loop.played+'%');
+				// console.log('frac:', loop.frac*100+'%',',totalTime:', loop.totalTime+'s',',currentTime:', loop.currentTime+'s',',played:', loop.played+'%');
 				// console.log('loop.getVideoLoadedFraction:', loop.getVideoLoadedFraction+'',',loop.getDuration:', loop.getDuration+'',',loop.getCurrentTime:', loop.getCurrentTime+'');
 				// console.log('loop.getVideoLoadedFraction:', loop.getVideoLoadedFraction(),',loop.getDuration:', loop.getDuration(),',loop.getCurrentTime:', loop.getCurrentTime());
 				loop.mute();
@@ -226,16 +226,17 @@ app.partial.autoshow = function($, container){
 					}, 200);
 				}
 			}, 100);
+			container.data('wait4loop', wait4loop);
 		}
 
 		window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 		if($('html.desktop').find('[role=autoshow]').length){
 			var apiTick = 0;
 			var retry = 0;
-			console.log('start retry');
+			// console.log('start retry');
 			apiTick = setInterval(function(){
 				if(onYouTubeIframeAPIReady && !players.loop.player){
-					console.log('retry:', retry, players.loop.player);
+					// console.log('retry:', retry, players.loop.player);
 					var api = $('script[src*=youtube]');
 					var newApi = api.clone().attr('src', 'https://www.youtube.com/iframe_api?retry=' + retry);
 					newApi.insertAfter(api);
@@ -262,25 +263,26 @@ app.partial.autoshow = function($, container){
 		// 		players.loop.player.pauseVideo();
 		// 	}
 		// });
-		setTimeout(function(){
-			$('.viewport', container).on('mousewheel', function(e){
-				if(e.originalEvent.deltaY>0 && $('#autoshow0101:checked').length && $('html.desktop').length){
-					$('#autoshow01011').trigger('click');
-					e.stopPropagation();
-					e.preventDefault();
-					return false;
-				}
-				if(e.originalEvent.deltaY>0 && $('#autoshow01:checked').length && !$('html.desktop').length){
-					$('#autoshow01011').trigger('click');
-					e.stopPropagation();
-					e.preventDefault();
-					return false;
-				}
-				if(e.originalEvent.deltaY<0){
-					$('.spa-prev', container).trigger('click');
-				}
-			});
-		}, 1000);
+		$('.viewport', container).on('mousewheel', function(e){
+			if(e.originalEvent.deltaY>0 && $('#autoshow0101:checked').length && $('html.desktop').length){
+				clearInterval(container.data('wait4loop')*1);
+				$('#autoshow01011').trigger('click');
+				e.stopPropagation();
+				e.preventDefault();
+				return false;
+			}
+			if(e.originalEvent.deltaY>0 && $('#autoshow01:checked').length && !$('html.desktop').length){
+				clearInterval(container.data('wait4loop')*1);
+				$('#autoshow01011').trigger('click');
+				e.stopPropagation();
+				e.preventDefault();
+				return false;
+			}
+			if(e.originalEvent.deltaY<0){
+				clearInterval(container.data('wait4loop')*1);
+				$('.spa-prev', container).trigger('click');
+			}
+		});
 		$('.back', container).on('click', function(){
 			$.each(players, function(name, element){
 				if(element.player.stopVideo){
