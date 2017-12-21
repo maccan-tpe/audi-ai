@@ -60,7 +60,7 @@ app.partial.sphere = function($, container){
         fnACos = Math.acos;
         fnSin = Math.sin;
         // Sphere Settings
-        iRadiusSphere = 300;
+        iRadiusSphere = 275;
         iProjSphereX = 0;
         iProjSphereY = 0;
         // Particle Settings
@@ -74,7 +74,7 @@ app.partial.sphere = function($, container){
         fSinAngle = 0.0;
         fCosAngle = 0.0;
         window.iFramesToRotate = 2000.0;
-        window.iPerspective = 600;
+        window.iPerspective = 670;
         window.iNewParticlePerFrame = 2;
         window.fGrowDuration = 120.0;
         window.fWaitDuration = 2000.0;
