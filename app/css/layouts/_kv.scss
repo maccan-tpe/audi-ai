@@ -190,6 +190,18 @@
         @media screen and (max-width: 1000px) {
             transform: scale(0.55);
         }
+        @media screen and (max-width: 950px) {
+            transform: scale(0.5);
+        }
+        @media screen and (max-width: 900px) {
+            transform: scale(0.45);
+        }
+        @media screen and (max-width: 850px) {
+            transform: scale(0.4);
+        }
+        @media screen and (max-width: 800px) {
+            transform: scale(0.35);
+        }
 
         // filter: blur(1px);
         // background: radial-gradient(
