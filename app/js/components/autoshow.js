@@ -11,7 +11,7 @@ app.partial.autoshow = function($, container){
 			container.trigger('page:load1');
 		}
 	});
-	container.on('page:load1' , function(page, menu){
+	container.one('page:load' , function(page, menu){
 		$('header nav [data-container=autoshow]').addClass('active').siblings().removeClass('active');
 		container.addClass('loaded');
 		if(location.hash == '#A8L'){
