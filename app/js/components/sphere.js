@@ -11,7 +11,7 @@ app.partial.sphere = function($, container){
 			container.trigger('page:load');
 		}
 	});
-	container.on('page:load' , function(page, menu){
+	container.one('page:load' , function(page, menu){
         container.addClass('loaded');
         try{
             sphere();

@@ -11,7 +11,7 @@ app.partial.a8l = function($, container){
 			container.trigger('page:load');
 		}
 	});
-	container.on('page:load' , function(page, menu){
+	container.one('page:load' , function(page, menu){
 		$('header nav [data-container=a8l]').addClass('active').siblings().removeClass('active');
 		//ga
 		if($('html.mobile,html.tablet').length){

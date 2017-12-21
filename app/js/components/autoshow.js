@@ -8,7 +8,7 @@
 app.partial.autoshow = function($, container){
 	container.on('page:update' , function(page, menu){
 		if(!container.hasClass('loaded')){
-			container.trigger('page:load1');
+			container.trigger('page:load');
 		}
 	});
 	container.one('page:load' , function(page, menu){
