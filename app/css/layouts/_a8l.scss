@@ -27,29 +27,33 @@
 
     .wrap{
         position: absolute;
-        right: 0;
-        margin-top: 5em;
         width: per(940, 1260);
-        margin-right: per(240, 1260);
+        margin: 5em 0 0 per(227,1920);
+        left: 0em;
         padding-bottom: 5em;
         @media screen and (max-width: 1440px) {
-            width: 720px;
-            margin-right: per(240, 1440);
-        }
-        @media screen and (max-width: 1366px) and (min-width: 1300px) {
             width: 720px;
             margin: 5em 0 0 per(227,1920);
             left: 25em;
         }
-        @media screen and (max-width: 1000px) {
+        @media screen and (max-width: 1366px) {
             width: 720px;
-            margin: 8em auto;
+            margin: 5em 0 0 per(120,1920);
+            left: 25em;
+        }
+        @media screen and (max-width: 1300px) {
+            left: 0;
+            width: auto;
+            margin: 8em 2em;
             position: relative;
+        }
+        @media screen and (max-width: 1000px) {
         }
         @media screen and (max-width: 800px) {
             position: relative;
             width: 100%;
             margin: 0;
+            left: 0;
             height: auto;
             .background{
                 width: 100%;
@@ -355,17 +359,19 @@
         @media screen and (max-width: 1440px) {
 
             right: 750px;
-            margin-right: per(240, 1440);
+            margin-right: per(120, 1440);
             left: auto;
             margin-left: auto;
         }
-        @media screen and (max-width: 1366px) and (min-width: 1300px) {
+        @media screen and (max-width: 1366px) {
+            right: per(800, 1366);
             margin-right: 2em;
         }
-        @media screen and (max-width: 1000px) {
-
+        @media screen and (max-width: 1300px) {
+            top: 2em;
             left: em(-20.5, 18);
             margin-left: 50%;
+            z-index: 3;
         }
         @media screen and (max-width: 800px) {
             top: 1em;
@@ -379,14 +385,25 @@
         height: em(74, 18);
         position: fixed;
         bottom: 100px;
-        margin-left: -250px;
-        left: 50%;
+        margin-right: per(1200, 1920);
+        right: 0;
         cursor: pointer;
         img,svg{
             @include SubItem();
         }
-        @media screen and (max-width: 1366px) and (min-width: 1300px) {
-            margin-left: -7em;
+        @media screen and (max-width: 1440px) {
+
+            right: 750px;
+            margin-right: per(120, 1440);
+        }
+        @media screen and (max-width: 1366px) {
+            right: per(800, 1366);
+            margin-right: 2em;
+        }
+        @media screen and (max-width: 1000px) {
+
+            left: em(-20.5, 18);
+            margin-left: 50%;
         }
     }
 	.logo{
