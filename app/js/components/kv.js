@@ -11,15 +11,15 @@ app.partial.kv = function($, container){
 			container.trigger('page:load');
 		}
 	});
-	// container.one('mousewheel', function(e){
-	// 	// console.log(e.originalEvent.deltaY);
-	// 	if(e.originalEvent.deltaY>0 ){
-	// 		$('.kv-btn').trigger('click');
-	// 		e.stopPropagation();
-	// 		e.preventDefault();
-	// 		return false;
-	// 	}
-	// });
+	container.one('mousewheel', function(e){
+		// console.log(e.originalEvent.deltaY);
+		if(e.originalEvent.deltaY>0 ){
+			$('.kv-btn').trigger('click');
+			e.stopPropagation();
+			e.preventDefault();
+			return false;
+		}
+	});
 	container.one('page:load' , function(page, menu){
 		container.addClass('loaded');
 		//ga
