@@ -1,7 +1,7 @@
 'use strict';
 /*eslint-disable new-cap, no-unused-vars,
 	no-use-before-define, no-trailing-spaces, space-infix-ops, comma-spacing,
-	no-mixed-spaces-and-tabs, no-multi-spaces, camelcase, no-loop-func,no-empty,
+	no-mixed-spaces-and-tabs, no-multi-spaces, camelcase, no-kv-func,no-empty,
 	key-spacing ,curly, no-shadow, no-return-assign, no-redeclare, no-unused-vars,
 	eqeqeq, no-extend-native, quotes , no-inner-declarations*/
 /*global app, TweenMax, YT, ga*/
@@ -16,7 +16,7 @@ app.partial.kv = function($, container){
 		container.on('mousewheel', function(e){
 			// console.log(e.originalEvent.deltaY);
 			if(e.originalEvent.deltaY>0 ){
-				clearInterval(container.data('wait4loop')*1);
+				clearInterval(container.data('wait4kv')*1);
 				$('.kv-btn').trigger('click');
 				e.stopPropagation();
 				e.preventDefault();
@@ -34,7 +34,7 @@ app.partial.kv = function($, container){
 		//
 		$('[data-spa]').unbind('click').on('click', function(e){
 			window.onYouTubeIframeAPIReady = function(){};
-			clearInterval(container.data('wait4loop')*1);
+			clearInterval(container.data('wait4kv')*1);
 			if(!app.spa.supported){
 				return true;
 			}else{
@@ -68,37 +68,37 @@ app.partial.kv = function($, container){
 		});
 		
 		// console.log('loaded:');
-		var players = {
-			loop: {
-				vid: $('#player').data('vid'),
-				elementId: 'player',
+		var homeplayers = {
+			kv: {
+				vid: $('#kvplayer').data('vid'),
+				elementId: 'kvplayer',
 				loop: 1,
 				autoplay: 1,
 				height: 1080,
 				width: 1920,
 				origin: location.href,
 				ready: function(){
-					// console.log(players.loop.player.playVideo)
-					// players.loop.player.playVideo();
+					// console.log(homeplayers.kv.player.playVideo)
+					// homeplayers.kv.player.playVideo();
 					// $('[for=autoshow01011]').trigger('click')
 				}
 			}
 		};
 	
 
-		// window.players = players;
+		// window.homeplayers = homeplayers;
 
 		
 		function onYouTubeIframeAPIReady() {
-			$('#player', container).addClass('fade');
+			$('#kvplayer', container).addClass('fade');
 
-			$.each(players, function(index, video){
+			$.each(homeplayers, function(index, video){
 				if(!$('#' + video.elementId).length){
 					return;
 				}
 				var playerVars = {
 					autoplay: video.autoplay,
-					playlist: video.loop ? video.vid : undefined,
+					playlist: video.kv ? video.vid : undefined,
 					rel: 0,
 					controls: 0,
 					showinfo: 0,
@@ -128,14 +128,14 @@ app.partial.kv = function($, container){
 
 			});
 
-			var kvplayer = players.loop.player;
+			var kvplayer = homeplayers.kv.player;
 			// kvplayer.frac = kvplayer.getVideoLoadedFraction();
 			// kvplayer.totalTime = kvplayer.getDuration();
 			// kvplayer.currentTime = kvplayer.getCurrentTime();
 			// kvplayer.played = currentTime/totalTime * 100;
 			// console.log('kvplayer:', kvplayer);
 
-			var wait4loop = setInterval(function(){
+			var wait4kv = setInterval(function(){
 				if(!kvplayer || !kvplayer.getVideoLoadedFraction){
 					return;
 				}
@@ -145,14 +145,14 @@ app.partial.kv = function($, container){
 				kvplayer.currentTime = kvplayer.getCurrentTime();
 				kvplayer.played = kvplayer.currentTime/kvplayer.totalTime * 100;
 				// console.log(frac);
-				if(kvplayer.frac >= 0.05 && !$('#player', container).hasClass('in')){
+				if(kvplayer.frac >= 0.05 && !$('#kvplayer', container).hasClass('in')){
 					kvplayer.pauseVideo();	
 					kvplayer.seekTo(0);
-					// clearInterval(wait4loop);
+					// clearInterval(wait4kv);
 					kvplayer.playVideo();
 					setTimeout(function(){
 						$('html').removeClass('loading');
-						$('#player', container).addClass('in');
+						$('#kvplayer', container).addClass('in');
 					}, 200);
 				}
 				$('.duration .played', container).width(kvplayer.played + '%');
@@ -166,21 +166,21 @@ app.partial.kv = function($, container){
 				if(kvplayer.played > 95){
 					kvplayer.pauseVideo();	
 					kvplayer.seekTo(0);
-					// clearInterval(wait4loop);
+					// clearInterval(wait4kv);
 					kvplayer.playVideo();
 				}
 			}, 250);
 
-			container.data('wait4loop', wait4loop);
+			container.data('wait4kv', wait4kv);
 
 			setTimeout(function(){
 				$('html').removeClass('loading');
-				$('#player', container).addClass('in');
+				$('#kvplayer', container).addClass('in');
 			}, 8000);
 
-			if($(window).width() <= 768 || $('html.mobile').length || !players.loop.vid){
+			if($(window).width() <= 768 || $('html.mobile').length || !homeplayers.kv.vid){
 				$('html').removeClass('loading');
-				clearInterval(wait4loop);
+				clearInterval(wait4kv);
 			}
 			
 
@@ -199,13 +199,13 @@ app.partial.kv = function($, container){
 
 		window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 
-		if($('html.desktop').find('#player').length){
+		if($('html.desktop').find('#kvplayer').length){
 			var apiTick = 0;
 			var retry = 0;
 			// console.log('start retry');
 			apiTick = setInterval(function(){
-				if(onYouTubeIframeAPIReady && !players.loop.player){
-					// console.log('retry:', retry, players.loop.player);
+				if(onYouTubeIframeAPIReady && !homeplayers.kv.player){
+					// console.log('retry:', retry, homeplayers.kv.player);
 					var api = $('script[src*=youtube]');
 					var newApi = api.clone().attr('src', 'https://www.youtube.com/iframe_api?retry=' + retry);
 					newApi.insertAfter(api);
