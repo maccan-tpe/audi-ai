@@ -385,6 +385,9 @@
         img,svg{
             @include SubItem();
         }
+        @media screen and (max-width: 1366px) and (min-width: 1300px) {
+            margin-left: -7em;
+        }
     }
 	.logo{
 		@media screen and (max-width: 800px) {
