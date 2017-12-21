@@ -11,7 +11,7 @@ app.partial.kv = function($, container){
 			container.trigger('page:load');
 		}
 	});
-	container.on('mousewheel', function(e){
+	container.one('mousewheel', function(e){
 		// console.log(e.originalEvent.deltaY);
 		if(e.originalEvent.deltaY>0 ){
 			$('.kv-btn').trigger('click');

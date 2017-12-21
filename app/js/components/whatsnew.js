@@ -32,7 +32,7 @@ app.partial.whatsnew = function($, container){
 			}
 		});
 	});
-	container.on('mousewheel', function(e){
+	container.one('mousewheel', function(e){
 		console.log(e.originalEvent.deltaY);
 		if(e.originalEvent.deltaY>0 ){
 			$('.btn-autoshow').trigger('click');
