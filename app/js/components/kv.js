@@ -10,18 +10,20 @@ app.partial.kv = function($, container){
 		if(!container.hasClass('loaded')){
 			container.trigger('page:load');
 		}
-		container.one('mousewheel', function(e){
-			// console.log(e.originalEvent.deltaY);
-			if(e.originalEvent.deltaY>0 ){
-				$('.kv-btn').trigger('click');
-				e.stopPropagation();
-				e.preventDefault();
-				return false;
-			}
-		});
 	});
 	container.one('page:load' , function(page, menu){
 		container.addClass('loaded');
+		setTimeout(function(){
+			container.one('mousewheel', function(e){
+				// console.log(e.originalEvent.deltaY);
+				if(e.originalEvent.deltaY>0 ){
+					$('.kv-btn').trigger('click');
+					e.stopPropagation();
+					e.preventDefault();
+					return false;
+				}
+			});
+		}, 1000);
 		//ga
 		if($('html.mobile,html.tablet').length){
 			ga('send', 'pageview', { 'page': 'Mobile_0.0_Index', 'title': 'Mobile_0.0_Index'});

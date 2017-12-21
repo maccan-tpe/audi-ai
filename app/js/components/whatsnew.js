@@ -31,17 +31,19 @@ app.partial.whatsnew = function($, container){
 				return false;
 			}
 		});
-		container.on('mousewheel', function(e){
-			// console.log(e.originalEvent.deltaY);
-			if(e.originalEvent.deltaY>0 ){
-				$('.btn-autoshow').trigger('click');
-				e.stopPropagation();
-				e.preventDefault();
-				return false;
-			}
-			if(e.originalEvent.deltaY<0){
-				$('.spa-prev', container).trigger('click');
-			}
-		});
+		setTimeout(function(){
+			container.on('mousewheel', function(e){
+				// console.log(e.originalEvent.deltaY);
+				if(e.originalEvent.deltaY>0 ){
+					$('.btn-autoshow').trigger('click');
+					e.stopPropagation();
+					e.preventDefault();
+					return false;
+				}
+				if(e.originalEvent.deltaY<0){
+					$('.spa-prev', container).trigger('click');
+				}
+			});
+		}, 1000);
 	});
 };
