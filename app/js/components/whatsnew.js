@@ -33,7 +33,7 @@ app.partial.whatsnew = function($, container){
 		});
 		
 		container.on('mousewheel', function(e){
-			console.log(e.originalEvent.deltaY);
+			// console.log(e.originalEvent.deltaY);
 			if(e.originalEvent.deltaY>0 ){
 				$('.spa-next').trigger('click');
 				e.stopPropagation();
