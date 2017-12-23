@@ -17,7 +17,7 @@ if($ || jQuery){
 		// 定義每個元件
 		$.each(app.partial, function(name, init){
 			var cont = $('[role='+name+']');
-			console.log(cont);
+			// console.log(cont);
 			init($, cont);
 			cont.trigger('page:update');
 		});
@@ -63,7 +63,7 @@ if($ || jQuery){
 				url: href
 			};
 			app.spa.to = href;
-			console.log(href);
+			// console.log(href);
 			$.get(href, function(r){
 				$(r).each(function(i, element){
 					if($(element).attr('property') === 'og:title'){
@@ -94,7 +94,9 @@ if($ || jQuery){
 				app.spa.container = app.spa.next;
 				app.spa.next = null;
 				pushState(app.spa.demand, app.spa.url);
-				$('html').removeClass('loading');
+				if(!$('[role-kv]').length){
+					$('html').removeClass('loading');
+				}
 				app.spa.hold = false;	
 			});
 			app.spa.container.addClass('translateRight');

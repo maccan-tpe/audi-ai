@@ -84,7 +84,23 @@
         margin-top: 0;
         left: 50%;
         margin-left: em(-350, 16);
-        font-size: em(16,18);
+        // font-size: em(16,18);
+        @media screen and (max-width: 1920px) {
+            font-size: vwxs(20,1920);
+            font-size: em(20, 18);
+        }
+        @media screen and (max-width: 1440px) {
+            font-size: em(20, 18);
+            font-size: vwxs(20,1440);
+        }
+        @media screen and (max-width: 1366px) {
+            font-size: em(19, 18);
+            font-size: vwxs(19,1366);
+        }
+        @media screen and (max-width: 1200px) {
+            font-size: em(19, 18);
+            font-size: vwxs(19,1366);
+        }
         @media screen and (max-width: 800px) {
             transform-origin: center top;
             // transform: scale(0.75);

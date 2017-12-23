@@ -1,5 +1,5 @@
 [role=a8l]{
-    width: per(1260, 1920);
+    width: per(1180, 1920);
     right: 0;
     top: 0;
     position: fixed;
@@ -10,10 +10,17 @@
     height: 0;
     transition: 0.5s opacity 0.4s, 0.3s filter 0s;
     @media screen and (max-width: 1440px) {
-        width: 100%;
+        width: 830px;
+        padding-left: 25em;
     }
-    @media screen and (max-width: 1366px) and (min-width: 1300px) {
+    @media screen and (max-width: 1366px) {
+        width: 800px;
+    }
+    @media screen and (max-width: 1300px) {
+        left: 0;
         width: 100%;
+        margin: 0 2em;
+        // position: relative;
     }
     @media screen and (max-width: 800px) {
         width: 100%;
@@ -27,28 +34,10 @@
 
     .wrap{
         position: absolute;
-        width: per(940, 1260);
-        margin: 5em 0 0 per(227,1920);
-        left: 0em;
-        padding-bottom: 5em;
-        @media screen and (max-width: 1440px) {
-            width: 720px;
-            margin: 5em 0 0 per(227,1920);
-            left: 25em;
-        }
-        @media screen and (max-width: 1366px) {
-            width: 720px;
-            margin: 5em 0 0 per(120,1920);
-            left: 25em;
-        }
-        @media screen and (max-width: 1300px) {
-            left: 0;
-            width: auto;
-            margin: 8em 2em;
-            position: relative;
-        }
-        @media screen and (max-width: 1000px) {
-        }
+        width: per(1000, 1180);
+        margin-right: per(120, 1180);
+        right: 0;
+        padding: 5em 0;
         @media screen and (max-width: 800px) {
             position: relative;
             width: 100%;
@@ -106,6 +95,7 @@
         &:hover{
             &:after{
                 opacity: 1;
+                z-index: 3;
             }
         }
         &[data-playing="1"]{
@@ -209,6 +199,7 @@
         @include SubItem();
         white-space: nowrap;
         transition-duration: 0s;
+        z-index: 3;
         @media screen and (max-width: 800px) {
             position: relative;
             height: auto;

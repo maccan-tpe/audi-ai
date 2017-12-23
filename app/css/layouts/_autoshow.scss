@@ -216,6 +216,7 @@
             height: auto;
             .bg{
                 @include SubItem();
+                height: per(304,404);
                 background: center/ cover;
             }
             &:before{
@@ -227,7 +228,6 @@
             opacity: 0;
             filter: grayscale(100%);
             transition: 0.15s linear 0s;
-            transition: filter 0.15s linear 0s, opacity 0.15s linear 0s, padding 0s linear 0s, height 0s linear 0s;
             font-size: em(24,18);
             color: #bb0a30;
             white-space: nowrap;
@@ -245,6 +245,7 @@
                 color: #bb0a30;
             }
             @media screen and (max-width: 800px) {
+                transition: filter 0.15s linear 0s, opacity 0.15s linear 0s, padding 0s linear 0s, height 0s linear 0s;
                 font-size: em(12,16);
                 position: relative;
                 padding-top: per(0, 640);
@@ -257,6 +258,19 @@
                 >a, >label{
                     @include SubItem();
                     padding: 1em;
+                    height: per(304,404);
+                    &.audi{
+                        top: per(314,404);
+                        height: per(90,404);
+                        width: 50%;
+                        // left: 50%;
+                        span.btn{
+                            font-size: em(16,12);
+                            @include SubItem();
+                            margin-top: 0;
+                            display: block;
+                        }
+                    }
                 }
                 p{
                     position: relative;
@@ -310,6 +324,16 @@
                 right: 0;
                 top: -1em;
                 background: #bb0a30;
+            }
+        }
+        .audi{
+            position: absolute;
+            right: em(170, 24);
+            bottom: 0;
+            span.btn{
+                &:before{
+                    background: none;
+                }
             }
         }
     }
@@ -452,7 +476,7 @@
             opacity: inherit;
             transition: filter 0.25s linear 0.3s, opacity 0.25s linear 0.3s, padding 0s linear 0s, height 0s linear 0s;
             transform: none;
-            padding-top: per(304, 640);
+            padding-top: per(404, 640);
             z-index: 1;
             &+.subitem{
                 margin-top: 1em;
