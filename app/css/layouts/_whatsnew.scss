@@ -102,6 +102,7 @@
             font-size: vwxs(19,1366);
         }
         @media screen and (max-width: 800px) {
+            font-size: 1em;
             transform-origin: center top;
             // transform: scale(0.75);
             width: 100%;
