@@ -10,6 +10,10 @@ app.partial.autoshow = function($, container){
 		if(!container.hasClass('loaded')){
 			container.trigger('page:load');
 		}
+		$('header nav a[href$=A8L]').on('click', function(){
+			$('#autoshow01011')[0].checked = true;
+			return false;
+		});
 	});
 	container.one('page:load' , function(page, menu){
 		$('header nav [data-container=autoshow]').addClass('active').siblings().removeClass('active');
