@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 709 88" style="enable-background:new 0 0 709 88;" xml:space="preserve">
+<style type="text/css">
+	.arrow-line{fill:#BB0A30;}
+	.arrow-tri{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#BB0A30;stroke-miterlimit:10;}
+	.arrow-tri2{fill-rule:evenodd;clip-rule:evenodd;fill:#BB0A30;}
+</style>
+<path class="arrow-line" d="M709,83.5l-8,4.5v-9L709,83.5z"/>
+<path class="arrow-tri" d="M619,5v78h82"/>
+<path class="arrow-line" d="M709,4.5L701,9V0L709,4.5z"/>
+<path class="arrow-tri2" d="M0,4h701v1H0V4z"/>
+</svg>
