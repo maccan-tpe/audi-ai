@@ -256,6 +256,14 @@
                 line-height: 2;
             }
         }
+        sub{
+            font-size: em(14,18);
+            bottom: 0;
+            @media screen and (max-width: 800px) {
+                font-size: em(11, 16);
+                line-height: 2;
+            }
+        }
         ol{
             font-size: em(16,18);
             line-height: em(30,16);

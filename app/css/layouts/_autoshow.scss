@@ -117,6 +117,7 @@
         opacity: inherit;
         backface-visibility: hidden;
         transition: 0.2s opacity 0s, 0s filter 0s;
+        height: 420px;
         @media screen and (max-width: 1366px) {
             margin-left: per(120,1920);
         }
@@ -137,7 +138,10 @@
                 filter: none;
                 opacity: inherit;
             }
-
+            &:hover{
+                filter: none;
+                opacity: inherit;
+            }
         }
         &:before{
             content:'';
@@ -148,7 +152,7 @@
             opacity: 0.3;
             position: absolute;
         }
-        label{
+        label,a{
             // margin: 0;
             width: 25%;
             display: inline-block;

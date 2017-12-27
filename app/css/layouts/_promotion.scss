@@ -1,0 +1,187 @@
+[role=promotion]{
+    .background{
+        overflow: hidden;
+        backface-visibility: hidden;
+        >figure.loaded{            
+            opacity: 0;
+            filter: blur(5px) grayscale(100%);
+            transition: 0.5s opacity 0.4s, 0.3s filter 0s ;
+            backface-visibility: hidden;
+        }
+        [data-for=promo1]{
+            .scroll{
+                width: 149px;
+                height: 64px;
+                position: absolute;
+                top: auto;
+                bottom: 40px;
+                left: 50%;
+                margin-left: -74px;
+                z-index: 2;
+                cursor: pointer;
+            }
+            h3{
+                left: 50%;
+                top: 50%;
+                margin-left: -480px;
+                margin-top: -140px;
+                position: absolute;
+                font-size: em(18,18);
+            }
+            figcaption{
+                position: absolute;
+                top: 50%; 
+                left: 50%;
+                margin: 70px 0 0 -155px;
+                text-align: center;
+                z-index: 2;
+                a{
+                    width: 150px;
+                    height: 45px;
+                    display: block;
+                    margin: 0 auto;
+                    font-size: em(16,18);
+                    line-height: 45px;
+                    text-align: center;
+                    background: #bb0a30;
+                    color: #fff;
+                }
+                sub{
+                    color: #bb0a30;
+                    bottom: 0;
+                    font-size: em(14,18);
+                }
+            }
+        } 
+        [data-for=promo2]{
+            .scroll{
+                width: 148px;
+                height: 64px;
+                position: absolute;
+                top: 40px;
+                left: 50%;
+                margin-left: -74px;
+                z-index: 2;
+                cursor: pointer;
+            }
+            figcaption{
+                left: 50%;
+                top: 50%;
+                margin-top: -210px;
+                position: absolute;
+                h3{
+                    font-size: em(18,18);
+                    line-height: 1.5;
+                }
+                .slick{
+                    width: 502px;
+                    height: 283px;
+                    figure{
+                        width: 502px;
+                        height: 283px;
+                        position: relative;
+                    }
+                    .slick-dots{
+                        bottom: -30px;
+                    }
+                    button{
+                        text-indent: -999px;
+                        display: block;
+                        width: 3px;
+                        height: 3px;
+                        border: 1px solid #fff;
+                        border-radius: 50%;
+                    }
+                    .slick-active{
+                        button{
+                            background: #fff;
+                        }
+                    }
+                    &+h3{
+                        width: 502px;
+                    }
+                    &~nav{
+                        width: 502px;
+                        text-align: center;
+                        a, aside{
+                            font-size: em(16,18);
+                            width: 150px;
+                            height: 45px;
+                            display: inline-block;
+                            line-height: 45px;
+                            background: #bb0a30;
+                            color: #fff;
+                            position: relative;
+                            &.sub{
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                height: 0;
+                                background: none;
+                                transition: 0s height 0.4s;
+                                a{
+                                    margin-top: 5px;
+                                    height: 0;
+                                    opacity: 0;
+                                    filter: blur(5px);
+                                    transition: 0.3s opacity 0.1s, 0.3s filter 0s, 0s height 0.4s;
+                                }
+                            }
+                            &:hover .sub{
+                                height: 300px;
+                                transition: 0s height 0s;
+                                a{
+                                    height: 45px;
+                                    filter: none;
+                                    opacity: inherit;
+                                    transition: 0.4s opacity 0.4s, 0s filter 0s ;
+                                    z-index: 1;
+                                }
+                            }
+                        }
+                    }
+                    &~sub{
+                        width: 502px;
+                        text-align: center;
+                        color: #bb0a30;
+                        display: inline-block;
+                        bottom: 0;
+                        font-size: em(14,18);
+                    }
+                }
+            }
+        }
+    }
+    #promo1:checked ~ .background [data-for=promo1],
+    #promo2:checked ~ .background [data-for=promo2]{
+        filter: none;
+        opacity: inherit;
+        transition: 0.4s opacity 0.4s, 0s filter 0s ;
+        z-index: 1;
+    }
+    .tabline{
+        width: 40px;
+        right: 0;
+        top: 50%;
+        position: fixed;
+        height: 220px;
+        margin-top: -110px;
+        border-left: 1px dashed #bb0a30;
+        z-index: 10;
+        &:after{
+            transition-duration: 0.2s;
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -3px;
+            height: 50%;
+            border-left: 3px solid #bb0a30;
+        }
+    }
+    #promo2:checked ~ .tabline{
+        &:after{
+            transition-duration: 0.2s;
+            top: 110px;
+        }
+    }
+}

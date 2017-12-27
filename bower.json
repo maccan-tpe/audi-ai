@@ -11,7 +11,8 @@
     "animate.css": "^3.5.2",
     "stats.js": "*",
     "dat.gui": "*",
-    "malihu-custom-scrollbar-plugin": "^3.1.5"
+    "malihu-custom-scrollbar-plugin": "^3.1.5",
+    "slick-carousel": "^1.8.1"
   },
   "overrides": {
     "slick-carousel": {
